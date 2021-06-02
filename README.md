@@ -23,7 +23,7 @@
 ## 設計書
 
 要件定義書・機能一覧・テーブル定義書・アプリケーション詳細設計書 https://www.icloud.com/numbers/0RZ_nRO5ZPjvMO2dbHSQ8o2Rg
-ER 図 https://drive.google.com/file/d/19ysI5KWsHKSOWtF0wPgLrGz3P0wZnjx9/view?usp=sharing
+  ER 図 https://drive.google.com/file/d/19ysI5KWsHKSOWtF0wPgLrGz3P0wZnjx9/view?usp=sharing
 
 ## チャレンジ要素一覧
 
