@@ -9,8 +9,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :image
       t.text :cooking_method
       t.integer :three_meals
-      t.boolean,default :release_status
-      t.boolean,default :is_deleted
+      t.boolean :release_status, fault: false
+      t.boolean :is_deleted, fault: false
       t.float :rate
 
       t.timestamps
