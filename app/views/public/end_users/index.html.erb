@@ -9,9 +9,10 @@
   </tr>
   <% @end_users.each do |end_user| %>
   <tr>
-    <td><%= attachment_image_tag end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" </td>
+    <td><%= attachment_image_tag end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
     <td><%= end_user.last_name + end_user.first_name %></td>
-    <td></td>
+    <td><%= end_user.introduction %></td>
   </tr>
-  
+  <% end %>
 </table>
+
