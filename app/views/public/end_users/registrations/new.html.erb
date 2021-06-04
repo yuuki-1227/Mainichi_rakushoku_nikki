@@ -1,7 +1,27 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "end_users/shared/error_messages", resource: resource %>
+<%= form_with model:@end_user, url:end_user_registration_path, id:'new_end_user', class:'new_end_user', local:true do |f| %>
+  <%= render "public/end_users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :kana_last_name %><br />
+    <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :kana_first_name %><br />
+    <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -26,4 +46,4 @@
   </div>
 <% end %>
 
-<%= render "end_users/shared/links" %>
+<%= render "public/end_users/shared/links" %>
