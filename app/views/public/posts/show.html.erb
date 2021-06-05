@@ -1,0 +1,16 @@
+<h1>投稿詳細</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>タイトル</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+    <td><%= @post.title %><td>
+    <td><%= @post.three_meals %></td>
+    <td><%= @post.explain %></td>
+  </tr>
+</table>
