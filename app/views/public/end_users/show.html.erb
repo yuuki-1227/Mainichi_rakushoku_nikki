@@ -9,8 +9,7 @@
   </tr>
   <tr>
     <td><%= attachment_image_tag @end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
-    <td><%= @end_user.last_name + @end_user.first_name %></td>
+    <td><%= @end_user.last_name + @end_user.kana_last_name %></td>
     <td><%= @end_user.introduction %></td>
   </tr>
-  <% end %>
 </table>
