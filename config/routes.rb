@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     # ジャンル
     resource :genres, only:[:index]
     # トップ
-    root to: "home#top"
+    root to: "homes#top"
     get "/about" => "homes#about"
   end
 end
