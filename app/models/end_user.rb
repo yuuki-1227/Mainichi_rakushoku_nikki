@@ -12,12 +12,13 @@ class EndUser < ApplicationRecord
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # @user.booksのように、@user.yyyで、
   # そのユーザがフォローしている人orフォローされている人の一覧を出したい
-  has_many :following_users, through: :followers, source: :followed
+  has_many :following_end_users, through: :followers, source: :followed
   # foreign_key（FK）には、@user.xxxとした際に「@user.idがfollower_idなのかfollowed_idなのか」を指定します。
   has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # @user.booksのように、@user.yyyで、
   # そのユーザがフォローしている人orフォローされている人の一覧を出したい
-  has_many :follower_users, through: :followeds, source: :follower
+  has_many :follower_end_users, through: :followeds, source: :follower
+  
   attachment :profile_image, destroy: false
 
   def following?(end_user)

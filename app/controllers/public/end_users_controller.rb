@@ -40,4 +40,11 @@ class Public::EndUsersController < ApplicationController
     params.require(:end_user).permit(:last_name, :kana_last_name, :first_name, :kana_first_name,:profile_image, :introduction, :is_deleted)
   end
 
+  def ensure_correct_end_user
+    @post = Post.find(params[:id])
+     unless @post.end_user == current_end_user
+     redirect_to posts_path
+     end
+  end
+
 end
