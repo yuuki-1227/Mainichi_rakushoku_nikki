@@ -3,14 +3,14 @@
 <table>
   <tr>
     <th></th>
-    <th>タイトル</th>
+    <th>名前</th>
     <th></th>
     <th></th>
   </tr>
   <% @posts.each do |post| %>
   <tr>
     <td>
-      <%= link_to post_path(post) do %>
+      <%= link_to admin_post_path(post) do %>
         <%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
       <% end %>
     </td>

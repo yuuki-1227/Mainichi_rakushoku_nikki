@@ -1,0 +1,34 @@
+<h2>投稿編集</h2>
+<table>
+  <tr>
+    <th></th>
+    <th>名前</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+    <td><%= @post.title %></td>
+    <td><%= @post.three_meals %></td>
+    <td><%= @post.explain %></td>
+    <td><%= @post.cooking_method %></td>
+    <td>
+      <% if @post.release_status == true %>
+        <p>公開中</p>
+      <% else %>
+        <p>非公開</p>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<%= form_with model:@post,url: admin_post_path, local:true do |f| %>
+  <div class="form-group">
+    <%= f.radio_button :is_deleted, :false %>
+    <%= f.label :is_deleted, "有効" %>
+    <%= f.radio_button :is_deleted, :true %>
+    <%= f.label :is_deleted, "無効" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-secondary' %>
+  </div>
+<% end %>

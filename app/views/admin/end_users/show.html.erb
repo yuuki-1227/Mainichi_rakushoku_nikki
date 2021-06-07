@@ -11,8 +11,13 @@
     <td><%= attachment_image_tag @end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
     <td><%= @end_user.last_name + @end_user.first_name %></td>
     <td><%= @end_user.introduction %></td>
-    <% if @end_user == current_end_user %>
-      <td><%= link_to '編集', edit_end_user_path(current_end_user) %></td>
-    <% end %>
+    <td>
+      <% if @end_user.is_deleted == false %>
+        <p class ="available">有効</p>
+      <% else %>
+        <p class ="invalid">退会</p>
+      <% end %>
+    </td>
+    <td><%= link_to '編集', edit_admin_end_user_path(@end_user) %></td>
   </tr>
 </table>

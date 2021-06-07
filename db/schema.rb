@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_014659) do
+ActiveRecord::Schema.define(version: 2021_06_07_012531) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_014659) do
     t.string "first_name"
     t.string "kana_last_name"
     t.string "kana_first_name"
-    t.string "profile_image"
+    t.string "profile_image_id"
     t.text "introduction"
     t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_014659) do
     t.integer "food_id"
     t.string "title"
     t.text "explain"
-    t.string "image"
+    t.string "image_id"
     t.text "cooking_method"
     t.integer "three_meals"
     t.boolean "release_status"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_014659) do
   create_table "shoppings", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "total_price"
-    t.string "image"
+    t.string "image_id"
     t.date "buy_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

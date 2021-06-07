@@ -14,18 +14,19 @@
     <td><%= @post.explain %></td>
     <td><%= @post.cooking_method %></td>
     <td>
-      <% if @post.end_user_id == current_end_user.id %>
-        <% if @post.release_status == true %>
-          <p>公開中</p>
-        <% else %>
-          <p>非公開</p>
-        <% end %>
+      <% if @post.release_status == true %>
+        <p>公開中</p>
+      <% else %>
+        <p>非公開</p>
       <% end %>
     </td>
     <td>
-      <% if @post.end_user_id == current_end_user.id %>
-        <%= link_to '編集', edit_post_path(@post) %>
+      <% if @post.is_deleted == false %>
+        <p>有効</p>
+      <% else %>
+        <p>無効</p>
       <% end %>
     </td>
+    <td><%= link_to '編集', edit_admin_post_path(@post) %></td>
   </tr>
 </table>
