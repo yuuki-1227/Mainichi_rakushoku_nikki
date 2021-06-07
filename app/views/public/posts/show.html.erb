@@ -12,5 +12,20 @@
     <td><%= @post.title %><td>
     <td><%= @post.three_meals %></td>
     <td><%= @post.explain %></td>
+    <td><%= @post.cooking_method %></td>
+    <td>
+      <% if @post.end_user_id == current_end_user.id %>
+        <% if @post.release_status == true %>
+          <p>公開中</p>
+        <% else %>
+          <p>非公開</p>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% if @post.end_user_id == current_end_user.id %>
+        <%= link_to '編集', edit_post_path(@post) %>
+      <% end %>
+    </td>
   </tr>
 </table>
