@@ -14,7 +14,8 @@
         <%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
       <% end %>
     </td>
-    <td><%= post.tile %></td>
+    <td><%= post.title %></td>
+    <td><%= post.three_meals %></td>
     <td><%= post.explain %></td>
   </tr>
   <% end %>

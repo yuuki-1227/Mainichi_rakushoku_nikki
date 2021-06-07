@@ -1,0 +1,32 @@
+<h1>投稿詳細</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>タイトル</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+    <td><%= @post.title %><td>
+    <td><%= @post.three_meals %></td>
+    <td><%= @post.explain %></td>
+    <td><%= @post.cooking_method %></td>
+    <td>
+      <% if @post.release_status == true %>
+        <p>公開中</p>
+      <% else %>
+        <p>非公開</p>
+      <% end %>
+    </td>
+    <td>
+      <% if @post.is_deleted == false %>
+        <p>有効</p>
+      <% else %>
+        <p>無効</p>
+      <% end %>
+    </td>
+    <td><%= link_to '編集', edit_admin_post_path(@post) %></td>
+  </tr>
+</table>
