@@ -35,8 +35,6 @@ Rails.application.routes.draw do
       get "relationships/fllowers" => "relationships#followers"
       get "/unsubscribe" => "end_users#unsubscribe"
       patch "/withdraw" => "end_users#withdraw"
-      # いいね
-      resource :favorites, only:[:create, :destroy]
       # 買い物
       resources :shoppings
     end
@@ -48,6 +46,8 @@ Rails.application.routes.draw do
     resources :posts do
       # コメント
       resources :post_comments, only:[:create, :destroy]
+      # いいね
+      resource :favorites, only:[:create, :destroy]
     end
     # ジャンル
     resource :genres, only:[:index]

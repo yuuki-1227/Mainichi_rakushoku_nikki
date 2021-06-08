@@ -1,0 +1,19 @@
+<% if end_user_signed_in? %>
+  <% if post.favorited_by?(current_end_user) %>
+    <p>
+      <%= link_to post_favorites_path(post), method: :delete, local: true do %>
+        <span style="color: red;">
+          ♥<%= post.favorites.count %>
+        </span>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_favorites_path(post), method: :post, local: true do %>
+        <span>
+          ♡<%= post.favorites.count %>
+        </span>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
