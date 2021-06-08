@@ -6,6 +6,8 @@ class Public::ShoppingsController < ApplicationController
 
   def show
     @shopping = Shopping.find(params[:id])
+    @food = Food.new
+    @foods = Food.all
   end
 
   def new
@@ -14,7 +16,8 @@ class Public::ShoppingsController < ApplicationController
 
   def create
     @shopping = Shopping.new(shopping_params)
-    @shopping.create
+    @shopping.end_user_id = current_end_user.id
+    @shopping.save
     redirect_to end_user_shoppings_path
   end
 
@@ -29,9 +32,15 @@ class Public::ShoppingsController < ApplicationController
   end
 
   def destroy
-    @shopping = Shopping.fing(params[:id])
+    @shopping = Shopping.find(params[:id])
     @shopping.destroy
     redirect_to end_user_shoppings_path
+  end
+
+  private
+
+  def shopping_params
+    params.require(:shopping).permit(:buy_date, :total_price, :image)
   end
 
 end

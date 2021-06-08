@@ -8,6 +8,14 @@ class Public::FoodsController < ApplicationController
     @food = Food.find(params[:id])
   end
 
+  def create
+    @food = Food.new(food_params)
+    @shopping = current_end_user.shoppings.find_by(params[:id])
+    @food.shopping_id = @shopping.id
+    @food.save
+    redirect_back(fallback_location: root_path)
+  end
+
   def edit
     @food = Food.find(params[:id])
   end
@@ -15,7 +23,7 @@ class Public::FoodsController < ApplicationController
   def update
     @food = Food.find(params[:id])
     @food.update(food_params)
-    redirect_to end_user_food_path(@food)
+    redirect_to end_user_shoppings_path(current_end_user)
   end
 
   def destroy
@@ -28,6 +36,12 @@ class Public::FoodsController < ApplicationController
     @foods = current_end_user.foods
     @foods.destroy_all
     redirect_to end_user_foods_path
+  end
+
+  private
+
+  def food_params
+    params.require(:food).permit(:name, :amount, :price)
   end
 
 end

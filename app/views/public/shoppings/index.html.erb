@@ -1,0 +1,22 @@
+<h2>家計簿</h2>
+<%= link_to '新規お買い物情報登録画面へ', new_end_user_shopping_path %>
+<table>
+  <tr>
+    <th></th>
+    <th>タイトル</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @shoppings.each do |shopping| %>
+  <tr>
+    <td>
+      <%= link_to end_user_shopping_path(current_end_user,shopping) do %>
+        <%= attachment_image_tag shopping, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <% end %>
+    </td>
+    <td><%= shopping.buy_date %></td>
+    <td><%= shopping.total_price %>円</td>
+    <td><%= link_to '削除', end_user_shopping_path(current_end_user,shopping), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
