@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       # 買い物
       resources :shoppings
       # 食材
-      resources :foods, only:[:index, :show, :edit, :update, :destroy]
+      resources :foods, only:[:index, :show, :create, :edit, :update, :destroy]
       delete "foods/destroy_all" => "foods#destroy_all"
     end
 
