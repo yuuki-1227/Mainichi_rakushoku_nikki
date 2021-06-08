@@ -29,6 +29,7 @@
     </td>
   </tr>
 </table>
+<%= render 'public/favorites/favorite',post: @post %>
 <% @post.post_comments.each do |comment| %>
   <table>
     <td>
