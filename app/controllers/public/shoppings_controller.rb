@@ -32,7 +32,7 @@ class Public::ShoppingsController < ApplicationController
   end
 
   def destroy
-    @shopping = Shopping.fing(params[:id])
+    @shopping = Shopping.find(params[:id])
     @shopping.destroy
     redirect_to end_user_shoppings_path
   end
