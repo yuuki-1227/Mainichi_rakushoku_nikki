@@ -1,0 +1,18 @@
+<% post.post_comments.each do |comment| %>
+  <table>
+    <td>
+      <%= attachment_image_tag comment.end_user, :profile_image, :fill, 100, 100, fallback: 'no_image.jpg' %><br>
+      <%= link_to comment.end_user.last_name, end_user_path(comment.end_user_id) %>
+    </td>
+    <td><%= comment.comment %></td>
+    <% if comment.end_user_id == current_end_user.id %>
+      <td><%= link_to '削除', post_post_comment_path(comment.post,comment), method: :delete %></td>
+    <% end %>
+  </table>
+<% end %>
+<div class="comment_form">
+  <%= form_with(model:[post, @post_comment], local: true) do |f| %>
+    <%= f.text_area :comment %>
+    <%= f.submit '送信' %>
+  <% end %>
+</div>

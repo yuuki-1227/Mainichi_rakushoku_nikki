@@ -37,8 +37,6 @@ Rails.application.routes.draw do
       patch "/withdraw" => "end_users#withdraw"
       # いいね
       resource :favorites, only:[:create, :destroy]
-      # コメント
-      resources :post_comments, only:[:create, :destroy]
       # 買い物
       resources :shoppings
     end
@@ -47,7 +45,10 @@ Rails.application.routes.draw do
     resources :foods, only:[:index, :show, :create, :edit, :update, :destroy]
     delete "foods/destroy_all" => "foods#destroy_all"
     # 投稿記事
-    resources :posts
+    resources :posts do
+      # コメント
+      resources :post_comments, only:[:create, :destroy]
+    end
     # ジャンル
     resource :genres, only:[:index]
     # トップ
