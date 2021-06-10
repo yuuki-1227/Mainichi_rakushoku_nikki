@@ -1,0 +1,2 @@
+<!----jabvascript/application.jsに//= require jqueryを追加する-->
+$('#end_user_<%= @end_user.id %>').html("<%= j (render 'public/relationships/form', end_user: @end_user) %>");

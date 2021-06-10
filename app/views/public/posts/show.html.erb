@@ -9,6 +9,7 @@
   </tr>
   <tr>
     <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+    <td class = "post-star" data-score = "<%= @post.rate %>"></td>
     <td><%= @post.title %><td>
     <td><%= @post.three_meals %></td>
     <td><%= @post.explain %></td>
@@ -29,5 +30,16 @@
     </td>
   </tr>
 </table>
-<%= render 'public/favorites/favorite',post: @post %>
+<script>
+  $('.post-star').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+<div id = "post_<%= @post.id %>">
+  <%= render 'public/favorites/favorite',post: @post %>
+</div>
 <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
