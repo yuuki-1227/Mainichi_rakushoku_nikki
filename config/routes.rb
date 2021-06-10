@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  get '/search' => 'search#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # 管理者
@@ -55,5 +53,7 @@ Rails.application.routes.draw do
     # トップ
     root to: "homes#top"
     get "/about" => "homes#about"
+
+    get '/search' => 'search#search'
   end
 end
