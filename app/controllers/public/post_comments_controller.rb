@@ -15,7 +15,7 @@ class Public::PostCommentsController < ApplicationController
 
 
   def destroy
-    @post_comment = PostComment.find_by(post_id: params[:post_id])
+    @post_comment = PostComment.find(params[:id])
     @post_comment.destroy
     redirect_back(fallback_location: root_path)
   end

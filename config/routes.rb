@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # 管理者
@@ -32,7 +31,11 @@ Rails.application.routes.draw do
       # フォロー、フォロワー
       resource :relationships, only:[:create, :destroy]
       get "relationships/follows" => "relationships#follows"
-      get "relationships/fllowers" => "relationships#followers"
+      get "relationships/followers" => "relationships#followers"
+      # フォローする
+      post 'follow' => 'relationships#follow', as: 'follow'
+      # フォロー外す
+      post 'unfollow' => 'relationships#unfollow', as: 'unfollow'
       get "/unsubscribe" => "end_users#unsubscribe"
       patch "/withdraw" => "end_users#withdraw"
       # 買い物
@@ -54,5 +57,7 @@ Rails.application.routes.draw do
     # トップ
     root to: "homes#top"
     get "/about" => "homes#about"
+
+    get '/search' => 'search#search'
   end
 end

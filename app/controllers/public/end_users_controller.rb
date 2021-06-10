@@ -8,6 +8,7 @@ class Public::EndUsersController < ApplicationController
   # 詳細画面
   def show
     @end_user = EndUser.find(params[:id])
+    @posts = Post.where(end_user_id: params[:id])
   end
 
   # 編集画面
