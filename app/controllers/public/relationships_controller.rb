@@ -12,12 +12,12 @@ class Public::RelationshipsController < ApplicationController
 
   def follow
     current_end_user.follow(params[:end_user_id])
-    redirect_back fallback_location: root_path
+    @end_user = EndUser.find(params[:end_user_id])
   end
 
   def unfollow
     current_end_user.unfollow(params[:end_user_id])
-    redirect_back fallback_location: root_path
+    @end_user = EndUser.find(params[:end_user_id])
   end
 
 end

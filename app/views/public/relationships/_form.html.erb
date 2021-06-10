@@ -1,0 +1,14 @@
+follows
+<%= link_to end_user.followers.count, end_user_relationships_follows_path(end_user) %><br>
+followers
+<%= link_to end_user.followeds.count, end_user_relationships_followers_path(end_user) %><br>
+
+<% if end_user.id == current_end_user.id %>
+  <%= link_to '編集',edit_end_user_path(end_user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{end_user.id}" %>
+<% else %>
+  <% if current_end_user.following?(end_user) %>
+    <%= link_to 'フォローを外す', end_user_unfollow_path(end_user), method: :post, remote: true %>
+  <% else %>
+      <%= link_to 'フォローする', end_user_follow_path(end_user), method: :post, remote: true %>
+  <% end %>
+<% end %>
