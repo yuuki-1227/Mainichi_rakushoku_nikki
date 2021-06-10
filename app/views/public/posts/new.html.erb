@@ -25,9 +25,10 @@
     <%= f.text_area :cooking_method, class: 'form-control post_cooking_method' %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :rate %>
-    <%= f.hidden_field :rate, id: :review_star %>
+  <div id="star">
+    <label>Rating</label>
+  </div>
+
   <script>
   $('#star').raty({
     size     : 36,
@@ -38,7 +39,6 @@
     half: true,
   });
   </script>
-  </div>
 
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
