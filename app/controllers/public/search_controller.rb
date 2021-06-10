@@ -11,13 +11,13 @@ class Public::SearchController < ApplicationController
   def search_for(model,content,method)
     if model == 'end_user'
       if method == 'perfect'
-        EndUser.where(name: content)
+        EndUser.where(last_name: content)
       elsif method == 'partial'
-        EndUser.where('name LIKE ?', '%' + content + '%')
+        EndUser.where('last_name LIKE ?', '%' + content + '%')
       elsif method == 'forward_match'
-        EndUser.where('name LIKE ?', "#{content}%")
+        EndUser.where('last_name LIKE ?', "#{content}%")
       elsif method == 'backward_match'
-        EndUser.where('name LIKE ?', "#{content}%")
+        EndUser.where('last_name LIKE ?', "#{content}%")
       end
     elsif model == 'post'
       if method == 'perfect'

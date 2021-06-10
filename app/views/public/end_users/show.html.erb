@@ -1,5 +1,7 @@
-<h1>ユーザー詳細</h1>
+<h1>ユーザー情報</h1>
+<%= render 'info', end_user: @end_user %>
 
+<h1>ユーザー詳細</h1>
 <table>
   <tr>
     <th></th>
@@ -16,3 +18,6 @@
     <% end %>
   </tr>
 </table>
+
+<h1>投稿一覧</h1>
+<%= render 'public/posts/index', posts: @posts %>

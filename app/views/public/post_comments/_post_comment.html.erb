@@ -11,7 +11,7 @@
   </table>
 <% end %>
 <div class="comment_form">
-  <%= form_with(model:[post, @post_comment], local: true) do |f| %>
+  <%= form_with(model:[post, post_comment], local: true) do |f| %>
     <%= f.text_area :comment %>
     <%= f.submit '送信' %>
   <% end %>

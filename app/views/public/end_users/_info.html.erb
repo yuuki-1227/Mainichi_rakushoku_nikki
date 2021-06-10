@@ -1,0 +1,31 @@
+<table>
+  <tr><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+  <tr>
+	  <th>name</th>
+	  <th><%= end_user.last_name + end_user.first_name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= end_user.introduction %></th>
+  </tr>
+  <tr>
+    <th>follows</th>
+    <th><%= link_to end_user.followers.count, end_user_relationships_follows_path(end_user) %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= link_to end_user.followeds.count, end_user_relationships_followers_path(end_user) %></th>
+  </tr>
+</table>
+
+<div>
+  <% if end_user.id == current_end_user.id %>
+    <%= link_to '編集',edit_end_user_path(end_user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{end_user.id}" %>
+  <% else %>
+    <% if current_end_user.following?(end_user) %>
+        <%= link_to 'フォローを外す', end_user_unfollow_path(end_user), method: :post %>
+    <% else %>
+        <%= link_to 'フォローする', end_user_follow_path(end_user), method: :post %>
+    <% end %>
+  <% end %>
+</div>
