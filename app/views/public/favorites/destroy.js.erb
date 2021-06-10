@@ -1,0 +1,2 @@
+<!----jabvascript/application.jsに//= require jqueryを追加する-->
+$('#post_<%= @post.id %>').html("<%= j (render 'public/favorites/favorite', post: @post) %>");
