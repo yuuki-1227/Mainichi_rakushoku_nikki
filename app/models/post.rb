@@ -3,6 +3,10 @@ class Post < ApplicationRecord
   belongs_to :end_user
   belongs_to :genre
   has_many :favorites, dependent: :destroy
+  
+  # ランキング機能
+  has_many :favorited_end_users, through: :favorites, source: :end_user
+  
   has_many :post_comments, dependent: :destroy
 
   attachment :image
