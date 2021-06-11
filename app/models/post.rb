@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
 
   belongs_to :end_user
-  belongs_to :genre
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
@@ -29,12 +28,12 @@ class Post < ApplicationRecord
     new_tags = sent_tags - current_tags                           # 送信されたタグから、現在存在するタグを除いたタグをnew_tagsとする
 
     old_tags.each do |old|
-      self.post_tags.delete Tag.find_by(name: old)            # 古いタグを削除する
+      self.tags.delete Tag.find_by(name: old)            # 古いタグを削除する
     end
 
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(name: new)         # 新しいタグをデータベースに保存する
-      self.post_tags << new_post_tag
+      self.tags << new_post_tag
     end
   end
 end

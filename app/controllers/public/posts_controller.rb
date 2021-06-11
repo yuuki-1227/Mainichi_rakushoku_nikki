@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
       @post.save_tag(tag_list)                  # save_tagはpost.rbに定義
       redirect_to posts_path
     else
-      render action :new
+      render "new"
     end
   end
 
@@ -47,8 +47,13 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post)
+    tag_list = params[:post][:name].split(nil)
+    if @post.update(post_params)
+      @post.save_tag(tag_list)
+      redirect_to post_path(@post)
+    else
+      render "edit"
+    end
   end
 
   def destroy
@@ -56,7 +61,7 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to post_path(@post)
   end
-  
+
   def search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
