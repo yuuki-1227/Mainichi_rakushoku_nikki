@@ -2,10 +2,20 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+  end
+
+  def favorited_ranking
     # いいね数によって並び替え
     # sortとはrubyのメソッド
     # a.favorited_end_users.size、b.favorited_end_users.sizeはそれぞれ各投稿のいいね数
     @favorited_ranking_posts = Post.includes(:favorited_end_users).sort {|a,b| b.favorited_end_users.size <=> a.favorited_end_users.size}
+  end
+  
+  def commented_ranking
+    # コメント数によって並び替え
+    # sortとはrubyのメソッド
+    # a.commented_end_users.size、b.commented_end_users.sizeはそれぞれ各投稿のいいね数
+    @commented_ranking_posts = Post.includes(:commented_end_users).sort {|a,b| b.commented_end_users.size <=> a.commented_end_users.size}
   end
 
   def show

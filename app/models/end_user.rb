@@ -9,6 +9,7 @@ class EndUser < ApplicationRecord
 
   # ランキング機能
   has_many :favorited_posts, through: :favorites, source: :post
+  has_many :commented_posts, through: :post_comments, source: :post
 
   has_many :post_comments, dependent: :destroy
   has_many :shoppings, dependent: :destroy

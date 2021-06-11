@@ -2,5 +2,6 @@
 <%= render 'info', end_user: current_end_user %>
 
 <h1>ユーザー一覧</h1>
+<%= link_to 'フォロワー数順',end_users_follower_ranking_path %>
 <%= render 'index', end_users: @end_users %>
 
