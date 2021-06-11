@@ -1,0 +1,28 @@
+<%= form_with model: @tag,url: admin_tags_path,local: true do |f| %>
+  <table>
+    <tr class="field">
+      <label for="genre_title">タグ名</label>
+      <%= f.text_field :name, autofocus: true, class: "tag_name" %>
+    </tr>
+    <tr class="actions">
+      <%= f.submit "新規登録" ,class: 'btn btn-sm btn-success tag-btn' %>
+    </tr>
+  </table>
+<% end %>
+
+<h1>ユーザー一覧</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>名前</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.name %></td>
+    <td><%= link_to '編集', edit_admin_tag_path(tag) %></td>
+  </tr>
+  <% end %>
+</table>

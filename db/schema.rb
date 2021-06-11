@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_012531) do
+ActiveRecord::Schema.define(version: 2021_06_11_073038) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -59,13 +59,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_012531) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_deleted"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "post_comments", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
@@ -76,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_012531) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "end_user_id"
-    t.integer "genre_id"
+    t.integer "tag_id"
     t.integer "food_id"
     t.string "title"
     t.text "explain"
@@ -102,6 +95,19 @@ ActiveRecord::Schema.define(version: 2021_06_07_012531) do
     t.integer "total_price"
     t.string "image_id"
     t.date "buy_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

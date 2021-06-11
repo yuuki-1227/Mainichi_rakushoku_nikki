@@ -1,5 +1,14 @@
 <h1>投稿一覧</h1>
-<%= link_to '投稿順', posts_path %>
-<%= link_to 'いいね数順', posts_favorited_ranking_path %>
-<%= link_to 'コメント数順', posts_commented_ranking_path %>
-<%= render 'index', posts: @posts %>
+<div>
+  <h3>タグリスト</h3>
+  <% @tag_list.each do |list| %>
+    <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
+  <% end %>
+</div>
+<div>
+  <%= link_to '投稿順', posts_path %>
+  <%= link_to 'いいね数順', posts_favorited_ranking_path %>
+  <%= link_to 'コメント数順', posts_commented_ranking_path %>
+  <%= render 'index', posts: @posts %>
+</div>
