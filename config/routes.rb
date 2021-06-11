@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     # 投稿記事
     resources :posts, only:[:index, :show, :edit, :update]
     # ジャンル
-    resources :genres, only:[:index, :create, :edit, :update, :destroy]
+    resources :tags, only:[:index]
   end
 
   # エンドユーザー
@@ -59,7 +59,7 @@ Rails.application.routes.draw do
       resource :favorites, only:[:create, :destroy]
     end
     # ジャンル
-    resource :genres, only:[:index]
+    resource :tags, only:[:index]
     # トップ
     root to: "homes#top"
     get "/about" => "homes#about"
