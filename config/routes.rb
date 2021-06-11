@@ -27,11 +27,13 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    get "/end_users/follower_ranking" => "end_users#follower_ranking"
+    get "/end_users/post_ranking" => "end_users#post_ranking"
     resources :end_users, only: [:show, :edit, :update, :index] do
       # フォロー、フォロワー
       resource :relationships, only:[:create, :destroy]
-      get "relationships/follows" => "relationships#follows"
-      get "relationships/followers" => "relationships#followers"
+      get "relationships/follows" => "relationships#following_end_users"
+      get "relationships/followers" => "relationships#follower_end_users"
       # フォローする
       post 'follow' => 'relationships#follow', as: 'follow'
       # フォロー外す
@@ -45,6 +47,10 @@ Rails.application.routes.draw do
     # 食材
     resources :foods, only:[:index, :show, :create, :edit, :update, :destroy]
     delete "foods/destroy_all" => "foods#destroy_all"
+    # 投稿記事いいね数ランキング
+    get "/posts/favorited_ranking" => "posts#favorited_ranking"
+     # 投稿記事コメント数ランキング
+    get "/posts/commented_ranking" => "posts#commented_ranking"
     # 投稿記事
     resources :posts do
       # コメント

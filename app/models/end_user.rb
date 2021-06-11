@@ -6,6 +6,11 @@ class EndUser < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  # ランキング機能
+  has_many :favorited_posts, through: :favorites, source: :post
+  has_many :commented_posts, through: :post_comments, source: :post
+
   has_many :post_comments, dependent: :destroy
   has_many :shoppings, dependent: :destroy
   # foreign_key（FK）には、@user.xxxとした際に「@user.idがfollower_idなのかfollowed_idなのか」を指定します。
@@ -18,7 +23,7 @@ class EndUser < ApplicationRecord
   # @user.booksのように、@user.yyyで、
   # そのユーザがフォローしている人orフォローされている人の一覧を出したい
   has_many :follower_end_users, through: :followeds, source: :follower
-  
+
   attachment :profile_image, destroy: false
 
   def following?(end_user)

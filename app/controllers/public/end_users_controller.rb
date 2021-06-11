@@ -5,6 +5,17 @@ class Public::EndUsersController < ApplicationController
     @end_users = EndUser.all
   end
 
+  # フォロワー数によって並び替え
+  # sortとはrubyのメソッド
+  # a.favorited_end_users.size、b.favorited_end_users.sizeはそれぞれ各投稿のいいね数
+  def follower_ranking
+    @follower_ranking_end_users = EndUser.includes(:followers).sort {|a,b| b.followers.size <=> a.followers.size}
+  end
+
+  def post_ranking
+    @post_ranking_end_users = EndUser.includes(:posts).sort {|a,b| b.posts.size <=> a.posts.size}
+  end
+
   # 詳細画面
   def show
     @end_user = EndUser.find(params[:id])
