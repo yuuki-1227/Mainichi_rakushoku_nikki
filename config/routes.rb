@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "/end_users/follower_ranking" => "end_users#follower_ranking"
+    get "/end_users/post_ranking" => "end_users#post_ranking"
     resources :end_users, only: [:show, :edit, :update, :index] do
       # フォロー、フォロワー
       resource :relationships, only:[:create, :destroy]

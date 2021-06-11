@@ -12,6 +12,9 @@ class Public::EndUsersController < ApplicationController
     @follower_ranking_end_users = EndUser.includes(:followers).sort {|a,b| b.followers.size <=> a.followers.size}
   end
 
+  def post_ranking
+    @post_ranking_end_users = EndUser.includes(:posts).sort {|a,b| b.posts.size <=> a.posts.size}
+  end
 
   # 詳細画面
   def show
