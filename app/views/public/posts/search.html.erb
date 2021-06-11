@@ -1,0 +1,10 @@
+<h3>タグリスト</h3>
+<% @tag_list.each do |list| %>
+  <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
+  <%= "(#{list.posts.count})" %>
+<% end %>
+
+<h3>タグが<%= "#{@tag.name}" %>の投稿一覧</h3>
+<% @posts.each do |post| %>
+  <%= link_to post.title, post_path(post) %>
+<% end %>
