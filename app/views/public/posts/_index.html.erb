@@ -1,10 +1,4 @@
 <table>
-  <tr>
-    <th></th>
-    <th>タイトル</th>
-    <th></th>
-    <th></th>
-  </tr>
   <% posts.each do |post| %>
   <tr>
     <td>
@@ -13,7 +7,6 @@
       <% end %>
     </td>
     <td><%= post.title %></td>
-    <td><%= post.three_meals %></td>
     <td><%= post.explain %></td>
   </tr>
   <% end %>

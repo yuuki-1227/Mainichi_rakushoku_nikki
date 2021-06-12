@@ -1,6 +1,6 @@
-follows
-<%= link_to end_user.followers.count, end_user_relationships_follows_path(end_user) %><br>
-followers
+フォロー
+<%= link_to end_user.followers.count, end_user_relationships_follows_path(end_user) %>
+フォロワー
 <%= link_to end_user.followeds.count, end_user_relationships_followers_path(end_user) %><br>
 
 <% if end_user.id == current_end_user.id %>

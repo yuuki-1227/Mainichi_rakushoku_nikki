@@ -1,51 +1,56 @@
-<h1>投稿詳細</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th>タイトル</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <tr>
-    <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
-    <td class = "post-star" data-score = "<%= @post.rate %>"></td>
-    <td>
-      <% @post_tags.each do |tag| %>
-        <%= link_to tag.name, tag_posts_path(tag_id: tag.id) %>
-        <%= "(#{tag.posts.count})" %>
-      <% end %>
-    </td>
-    <td><%= @post.title %><td>
-    <td><%= @post.three_meals %></td>
-    <td><%= @post.explain %></td>
-    <td><%= @post.cooking_method %></td>
-    <td>
-      <% if @post.end_user_id == current_end_user.id %>
-        <% if @post.release_status == true %>
-          <p>公開中</p>
-        <% else %>
-          <p>非公開</p>
+<div class = "heading-title">
+  <p>ユーザー情報</p>
+</div>
+<div class = "user-info">
+  <%= render 'public/end_users/info', end_user: @post.end_user %>
+</div>
+<div class = "heading-title">
+  <p>投稿詳細</p>
+</div>
+<div class = "post-info">
+  <table>
+    <tr>
+      <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+      <td class = "post-star" data-score = "<%= @post.rate %>"></td>
+      <td>
+        <% @post_tags.each do |tag| %>
+          <%= link_to tag.name, tag_posts_path(tag_id: tag.id) %>
+          <%= "(#{tag.posts.count})" %>
         <% end %>
-      <% end %>
-    </td>
-    <td>
-      <% if @post.end_user_id == current_end_user.id %>
-        <%= link_to '編集', edit_post_path(@post) %>
-      <% end %>
-    </td>
-  </tr>
-</table>
-<script>
-  $('.post-star').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
+      </td>
+      <td><%= @post.title %><td>
+      <td><%= @post.three_meals %></td>
+      <td><%= @post.explain %></td>
+      <td><%= @post.cooking_method %></td>
+      <td>
+        <% if @post.end_user_id == current_end_user.id %>
+          <% if @post.release_status == true %>
+            <p>公開中</p>
+          <% else %>
+            <p>非公開</p>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if @post.end_user_id == current_end_user.id %>
+          <%= link_to '編集', edit_post_path(@post) %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  <script>
+    $('.post-star').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  </script>
+</div>
 <div id = "post_<%= @post.id %>">
   <%= render 'public/favorites/favorite',post: @post %>
 </div>
-<%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
+<div class = "comment-form">
+  <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
+</div>
