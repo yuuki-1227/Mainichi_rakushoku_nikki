@@ -24,3 +24,15 @@
 
 <h1>投稿一覧</h1>
 <%= render 'public/posts/index', posts: @posts %>
+
+<% if @end_user == current_end_user %>
+  <%= month_calendar events: @posts do |datetime, posts| %>
+    <%= datetime.day %>
+
+    <% posts.each do |post| %>
+      <div>
+        <%= link_to post.title, post_path(post) %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
