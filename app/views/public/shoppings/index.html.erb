@@ -14,9 +14,21 @@
         <%= attachment_image_tag shopping, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
       <% end %>
     </td>
-    <td><%= shopping.buy_date %></td>
+    <td><%= shopping.start_time %></td>
     <td><%= shopping.total_price %>円</td>
     <td><%= link_to '削除', end_user_shopping_path(current_end_user,shopping), method: :delete %></td>
   </tr>
   <% end %>
 </table>
+  <%= month_calendar events: @shoppings do |datetime, shoppings| %>
+    <%= datetime.day %>
+
+    <% shoppings.each do |shopping| %>
+      <div>
+        <%= link_to end_user_shopping_path(current_end_user,shopping) do %>
+          <%= shopping.total_price %>円
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+

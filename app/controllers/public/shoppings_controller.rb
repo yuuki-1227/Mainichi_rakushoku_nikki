@@ -1,7 +1,8 @@
 class Public::ShoppingsController < ApplicationController
 
   def index
-    @shoppings = Shopping.all
+    @shoppings = Shopping.where(end_user_id: current_end_user.id)
+    @shopping = Shopping.find_by(end_user_id: current_end_user.id)
   end
 
   def show
@@ -40,7 +41,7 @@ class Public::ShoppingsController < ApplicationController
   private
 
   def shopping_params
-    params.require(:shopping).permit(:buy_date, :total_price, :image)
+    params.require(:shopping).permit(:start_time, :total_price, :image)
   end
 
 end
