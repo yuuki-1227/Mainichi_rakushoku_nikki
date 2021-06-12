@@ -1,11 +1,9 @@
 <table>
-  <tr><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
   <tr>
-	  <th>name</th>
-	  <th><%= end_user.last_name + end_user.first_name %></th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th><%= end_user.introduction %></th>
+    <td><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></td>
+    <td>
+      <%= end_user.last_name + end_user.first_name %><br>
+      <%= end_user.introduction %>
+    </td>
   </tr>
 </table>

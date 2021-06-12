@@ -1,26 +1,29 @@
-<h2>Log in</h2>
-
-<%= form_with model:@end_user, url:end_user_session_path, local:true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class = "heading-title">
+  <p>ログイン画面</p>
+</div>
+<div class = "information-form">
+  <%= form_with model:@end_user, url:end_user_session_path, local:true do |f| %>
+    <div class = "error_messages">
+      <%= render "public/end_users/shared/error_messages", resource: resource %>
     </div>
+    <table class = "information-form__field">
+      <tr>
+        <td>
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="actions">
+          <%= f.submit "Log in" %>
+        </td>
+      </tr>
+    </table>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "public/end_users/shared/links" %>
+</div>

@@ -1,18 +1,21 @@
-<h3>タグリスト</h3>
-<% @tag_list.each do |list| %>
-  <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
-  <%= "(#{list.posts.count})" %>
-<% end %>
-
-<h3>タグが<%= "#{@tag.name}" %>の投稿一覧</h3>
-<table>
-  <% @posts.each do |post| %>
-  <tr>
-    <td>
-      <%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image.jpg" %><br>
-      <%= link_to post.end_user.last_name, end_user_path(post.end_user.id) %>
-    </td>
-    <td><%= link_to post.title, post_path(post) %></td>
-  </tr>
+<div class = "tag-list">
+  <p>タグリスト</p>
+  <% @tag_list.each do |list| %>
+    <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
   <% end %>
-</table>
+</div>
+<div class = "post-index">
+  <p>タグが<%= "#{@tag.name}" %>の投稿一覧</p>
+  <table>
+    <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image.jpg" %><br>
+        <%= link_to post.end_user.last_name, end_user_path(post.end_user.id) %>
+      </td>
+      <td><%= link_to post.title, post_path(post) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,8 +1,17 @@
-<h1>ユーザー情報</h1>
-<%= render 'public/end_users/info', end_user: current_end_user %>
-
-<h1>投稿一覧</h1>
-<%= link_to '投稿順', posts_path %>
-<%= link_to 'いいね数順', posts_favorited_ranking_path %>
-<%= link_to 'コメント数順', posts_commented_ranking_path %>
-<%= render 'index', posts: @commented_ranking_posts %>
+<div class = "heading-title">
+  <p>ユーザー情報</p>
+</div>
+<div class = "user-info">
+  <%= render 'public/end_users/info', end_user: current_end_user %>
+</div>
+<div class = "heading-title">
+  <p>投稿一覧</p>
+</div>
+<div class = "link">
+  <%= link_to '投稿順', posts_path %>
+  <%= link_to 'いいね数順', posts_favorited_ranking_path %>
+  <%= link_to 'コメント数順', posts_commented_ranking_path %>
+</div>
+<div class = "post-index">
+  <%= render 'index', posts: @commented_ranking_posts %>
+</div>
