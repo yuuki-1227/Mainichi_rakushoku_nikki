@@ -29,7 +29,7 @@ class Public::FoodsController < ApplicationController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to end_user_foods_path
+    redirect_to end_user_shoppings_path
   end
 
   def destroy_all

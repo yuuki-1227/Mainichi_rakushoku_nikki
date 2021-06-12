@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <td><%= attachment_image_tag @shopping, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
-    <td><%= @shopping.buy_date %></td>
+    <td><%= @shopping.start_time %></td>
     <td><%= @shopping.total_price %>円</td>
     <td><%= link_to '編集', edit_end_user_shopping_path(current_end_user,@shopping) %></td>
     <td><%= link_to '削除', end_user_shopping_path(current_end_user,@shopping), method: :delete %></td>
