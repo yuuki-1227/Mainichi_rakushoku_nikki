@@ -1,0 +1,13 @@
+.user-info {
+  margin-bottom: 30px;
+
+
+    &__table {
+
+      &--profile_image {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+      }
+    }
+}

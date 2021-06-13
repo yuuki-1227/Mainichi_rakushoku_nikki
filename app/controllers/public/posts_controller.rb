@@ -23,6 +23,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_tags = @post.tags
+    @end_user = @post.end_user
   end
 
   def new

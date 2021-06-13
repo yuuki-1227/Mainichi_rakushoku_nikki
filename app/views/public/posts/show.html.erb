@@ -1,56 +1,87 @@
-<div class = "heading-title">
-  <p>ユーザー情報</p>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
+      <% if @end_user == current_end_user %>
+
+      <% else %>
+
+      <% end %>
+    </p>
+    <p class="main-visual__content--text">
+      <% if @end_user == current_end_user %>
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+      <% else %>
+
+      <% end %>
+    </p>
+  </div>
 </div>
-<div class = "user-info">
-  <%= render 'public/end_users/info', end_user: @post.end_user %>
-</div>
-<div class = "heading-title">
-  <p>投稿詳細</p>
-</div>
-<div class = "post-info">
-  <table>
-    <tr>
-      <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
-      <td class = "post-star" data-score = "<%= @post.rate %>"></td>
-      <td>
-        <% @post_tags.each do |tag| %>
-          <%= link_to tag.name, tag_posts_path(tag_id: tag.id) %>
-          <%= "(#{tag.posts.count})" %>
-        <% end %>
-      </td>
-      <td><%= @post.title %><td>
-      <td><%= @post.three_meals %></td>
-      <td><%= @post.explain %></td>
-      <td><%= @post.cooking_method %></td>
-      <td>
-        <% if @post.end_user_id == current_end_user.id %>
-          <% if @post.release_status == true %>
-            <p>公開中</p>
-          <% else %>
-            <p>非公開</p>
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% if @post.end_user_id == current_end_user.id %>
-          <%= link_to '編集', edit_post_path(@post) %>
-        <% end %>
-      </td>
-    </tr>
-  </table>
-  <script>
-    $('.post-star').raty({
-      readOnly: true,
-      score: function() {
-        return $(this).attr('data-score');
-      },
-      path: '/assets/'
-    });
-  </script>
-</div>
-<div id = "post_<%= @post.id %>">
-  <%= render 'public/favorites/favorite',post: @post %>
-</div>
-<div class = "comment-form">
-  <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
-</div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <h3 class = "main__sidebar--heading">
+      投稿ユーザー情報
+    </h3>
+    <div class = "user-info">
+      <%= render 'public/end_users/info', end_user: @end_user %>
+      <div id = "end_user_<%= @end_user.id %>">
+        <%= render 'public/relationships/form', end_user: @end_user %>
+      </div>
+    </div>
+  </div>
+  <div class = "main__blog">
+    <h3 class = "main__blog--heading">
+        投稿詳細
+    </h3>
+    <div class = "main__blog--post-information">
+      <table>
+        <tr>
+          <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+          <td class = "post-star" data-score = "<%= @post.rate %>"></td>
+          <td>
+            <% @post_tags.each do |tag| %>
+              <%= link_to tag.name, tag_posts_path(tag_id: tag.id) %>
+              <%= "(#{tag.posts.count})" %>
+            <% end %>
+          </td>
+          <td><%= @post.title %><td>
+          <td><%= @post.three_meals %></td>
+          <td><%= @post.explain %></td>
+          <td><%= @post.cooking_method %></td>
+          <td>
+            <% if @post.end_user_id == current_end_user.id %>
+              <% if @post.release_status == true %>
+                <p>公開中</p>
+              <% else %>
+                <p>非公開</p>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <% if @post.end_user_id == current_end_user.id %>
+              <%= link_to '編集', edit_post_path(@post) %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <script>
+        $('.post-star').raty({
+          readOnly: true,
+          score: function() {
+            return $(this).attr('data-score');
+          },
+          path: '/assets/'
+        });
+      </script>
+    </div>
+    <div id = "post_<%= @post.id %>">
+      <%= render 'public/favorites/favorite',post: @post %>
+    </div>
+    <h3 class = "main__blog--heading">
+      コメント
+    </h3>
+    <div class = "comment-form">
+      <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
+    </div>
+  </div>
+</main>
