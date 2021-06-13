@@ -1,4 +1,4 @@
-<%= form_with model:@contact, url: contacts_confirm_path, method: :post do |f| %>
+<%= form_with model:@contact, url: contacts_confirm_path, method: :post, local: true do |f| %>
   <div class="form-group">
     <%= f.label :name, 'お名前' %>
     <%= f.text_field :name, autofocus: true, class: 'form-control' %>
