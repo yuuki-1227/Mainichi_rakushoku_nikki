@@ -68,9 +68,9 @@ Rails.application.routes.draw do
     # タグ一覧
     get '/search' => 'search#search'
     # お問い合わせ関連
-    resources :contacts, only:[:new, :create]
     post 'contacts/confirm' => 'contacts#confirm'
     post 'contacts/back' => 'contacts#back'
     get 'done' => 'contacts#done'
+    resources :contacts, only:[:new, :create]
   end
 end

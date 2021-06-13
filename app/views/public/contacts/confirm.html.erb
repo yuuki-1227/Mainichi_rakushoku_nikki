@@ -11,7 +11,7 @@
   </tbody>
 </table>
 
-<%= form_with model:@contact do |f| %>
+<%= form_with model:@contact, url:contacts_path, method: :post  do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
   <%= f.hidden_field :phone_number %>
