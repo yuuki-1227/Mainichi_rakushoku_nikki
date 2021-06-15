@@ -1,15 +1,15 @@
-<h2>買い物情報登録画面</h2>
-<%= form_with model:@shopping, url:end_user_shoppings_path, local:true do |f| %>
+
+<%= form_with model:shopping, url:end_user_shoppings_path, local:true do |f| %>
   <div class="form-group">
-    <%= f.label :start_time %>
+    <%= f.label :start_time, 'お買い物日' %>
     <%= f.date_field :start_time, class: 'form-control buy_date' %>
   </div>
   <div class="form-group">
-    <%= f.label :total_price %>
-    <%= f.text_field :total_price, class: 'form-control total_price' %>
+    <%= f.label :total_price, '合計金額' %>
+    <%= f.text_field :total_price, class: 'form-control total_price' %>円
   </div>
   <div class="form-group">
-    <%= f.label :image %>
+    <%= f.label :image, '写真' %>
     <%= f.attachment_field :image, class: 'form-control post_image' %>
   </div>
   <div class="form-group">

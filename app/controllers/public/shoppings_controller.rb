@@ -3,16 +3,13 @@ class Public::ShoppingsController < ApplicationController
   def index
     @shoppings = Shopping.where(end_user_id: current_end_user.id)
     @shopping = Shopping.find_by(end_user_id: current_end_user.id)
+    @new_shopping = Shopping.new
   end
 
   def show
     @shopping = Shopping.find(params[:id])
     @food = Food.new
     @foods = Food.all
-  end
-
-  def new
-    @shopping = Shopping.new
   end
 
   def create

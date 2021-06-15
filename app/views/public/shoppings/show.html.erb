@@ -1,52 +1,78 @@
-<h2>お買い物情報詳細画面</h2>
-<table>
-  <tr>
-    <th></th>
-    <th>タイトル</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <tr>
-    <td><%= attachment_image_tag @shopping, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
-    <td><%= @shopping.start_time %></td>
-    <td><%= @shopping.total_price %>円</td>
-    <td><%= link_to '編集', edit_end_user_shopping_path(current_end_user,@shopping) %></td>
-    <td><%= link_to '削除', end_user_shopping_path(current_end_user,@shopping), method: :delete %></td>
-  </tr>
-</table>
-<h2>お買い物詳細情報画面</h2>
-<table>
-  <tr>
-    <th></th>
-    <th>タイトル</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @foods.each do |food| %>
-  <tr>
-    <td><%= food.name %></td>
-    <td><%= food.amount %></td>
-    <td><%= food.price %></td>
-    <td><%= link_to '編集', edit_food_path(food) %></td>
-    <td><%= link_to '削除', food_path(food), method: :delete %></td>
-  </tr>
-  <% end %>
-</table>
-<h2>お買い物詳細情報登録</h2>
-<%= form_with model:@food, url:foods_path, local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control name' %>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
+
+    </p>
+    <p class="main-visual__content--text">
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+    </p>
   </div>
-  <div class="form-group">
-    <%= f.label :amount %>
-    <%= f.text_field :amount, class: 'form-control amount' %>
+</div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <h3 class = "main__sidebar--heading">
+      投稿ユーザー情報
+    </h3>
+    <div class = "user-info">
+      <%= render 'public/end_users/info', end_user: current_end_user %>
+      <div id = "end_user_<%= current_end_user.id %>">
+        <%= render 'public/relationships/form', end_user: current_end_user %>
+      </div>
+    </div>
+    <h3 class = "main__sidebar--heading">
+      新規お買い物登録
+    </h3>
+    <div class="main__sidebar--new-foods-form">
+      <%= form_with model:@food, url:foods_path, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :name, '食材名' %>
+          <%= f.text_field :name, class: 'form-control name' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :amount, '個数' %>
+          <%= f.text_field :amount, class: 'form-control amount' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, '値段' %>
+          <%= f.text_field :price, class: 'form-control price' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :price %>
-    <%= f.text_field :price, class: 'form-control price' %>
+  <div class="main__blog">
+    <h3 class = "main__blog--heading">
+        お買い物情報
+    </h3>
+    <div class="main__blog--shopping-info">
+      <table>
+        <tr>
+          <td><%= attachment_image_tag @shopping, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+          <td><%= @shopping.start_time %></td>
+          <td><%= @shopping.total_price %>円</td>
+          <td><%= link_to '編集', edit_end_user_shopping_path(current_end_user,@shopping) %></td>
+          <td><%= link_to '削除', end_user_shopping_path(current_end_user,@shopping), method: :delete %></td>
+        </tr>
+      </table>
+    </div>
+    <h3 class = "main__blog--heading">
+        食材情報
+    </h3>
+    <div calss="main__blog--foods-info">
+      <table>
+        <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.amount %></td>
+          <td><%= food.price %></td>
+          <td><%= link_to '編集', edit_food_path(food) %></td>
+          <td><%= link_to '削除', food_path(food), method: :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-  </div>
-<% end %>
+</main>
