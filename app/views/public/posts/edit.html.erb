@@ -63,9 +63,9 @@
         <script>
         $('#star').raty({
           size     : 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
+          starOff:  '<%= asset_path(image_url('star-off')) %>',
+          starOn : '<%= asset_path(image_url('star-on')) %>',
+          starHalf: '<%= asset_path(image_url('star-half')) %>',
           scoreName: 'post[rate]',
           half: true,
         });
