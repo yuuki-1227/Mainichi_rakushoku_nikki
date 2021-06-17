@@ -88,3 +88,6 @@ gem 'simple_calendar', '~> 2.0'
 
 # 環境変数
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
