@@ -66,5 +66,10 @@
           text-align: center;
           margin-bottom: 20px;
         }
+
+        &--edit {
+          display: flex;
+          justify-content: center;
+        }
     }
 }

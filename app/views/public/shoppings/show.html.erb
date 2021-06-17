@@ -31,11 +31,11 @@
         </div>
         <div class="form-group">
           <%= f.label :amount, '個数' %>
-          <%= f.text_field :amount, class: 'form-control amount' %>
+          <%= f.text_field :amount, class: 'form-control amount' %>個
         </div>
         <div class="form-group">
           <%= f.label :price, '値段' %>
-          <%= f.text_field :price, class: 'form-control price' %>
+          <%= f.text_field :price, class: 'form-control price' %>円
         </div>
         <div class="form-group">
           <%= f.submit class: 'btn btn-success' %>
@@ -63,11 +63,11 @@
     </h3>
     <div calss="main__blog--foods-info">
       <table>
-        <% @foods.each do |food| %>
+        <% @shopping.foods.each do |food| %>
         <tr>
           <td><%= food.name %></td>
-          <td><%= food.amount %></td>
-          <td><%= food.price %></td>
+          <td><%= food.amount %>個</td>
+          <td><%= food.price %>円</td>
           <td><%= link_to '編集', edit_food_path(food) %></td>
           <td><%= link_to '削除', food_path(food), method: :delete %></td>
         </tr>
