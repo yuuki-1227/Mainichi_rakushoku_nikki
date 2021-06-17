@@ -11,7 +11,6 @@
     <% elsif admin_signed_in? %>
       <li class="header__header-top--list"><%= link_to '投稿一覧',  admin_posts_path %></li>
       <li class="header__header-top--list"><%= link_to 'ユーザー一覧',  admin_end_users_path %></li>
-      <li class="header__header-top--list"><%= link_to 'ジャンル一覧',  admin_genres_path %></li>
       <li class="header__header-top--list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
     <% else %>
       <li class="header__header-top--list"><%= link_to ' About',  about_path %></li>
