@@ -1,34 +1,49 @@
-<h2>家計簿</h2>
-<%= link_to '新規お買い物情報登録画面へ', new_end_user_shopping_path %>
-<table>
-  <tr>
-    <th></th>
-    <th>タイトル</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @shoppings.each do |shopping| %>
-  <tr>
-    <td>
-      <%= link_to end_user_shopping_path(current_end_user,shopping) do %>
-        <%= attachment_image_tag shopping, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
-      <% end %>
-    </td>
-    <td><%= shopping.start_time %></td>
-    <td><%= shopping.total_price %>円</td>
-    <td><%= link_to '削除', end_user_shopping_path(current_end_user,shopping), method: :delete %></td>
-  </tr>
-  <% end %>
-</table>
-  <%= month_calendar events: @shoppings do |datetime, shoppings| %>
-    <%= datetime.day %>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
 
-    <% shoppings.each do |shopping| %>
-      <div>
-        <%= link_to end_user_shopping_path(current_end_user,shopping) do %>
-          <%= shopping.total_price %>円
-        <% end %>
+    </p>
+    <p class="main-visual__content--text">
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+    </p>
+  </div>
+</div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <h3 class = "main__sidebar--heading">
+      投稿ユーザー情報
+    </h3>
+    <div class = "user-info">
+      <%= render 'public/end_users/info', end_user: current_end_user %>
+      <div id = "end_user_<%= current_end_user.id %>">
+        <%= render 'public/relationships/form', end_user: current_end_user %>
       </div>
-    <% end %>
-  <% end %>
+    </div>
+    <h3 class = "main__sidebar--heading">
+      新規お買い物登録
+    </h3>
+    <div class="main__sidebar--new-shopping-form">
+      <%= render 'new', shopping: @new_shopping %>
+    </div>
+  </div>
+  <div class="main__blog">
+    <h3 class = "main__blog--heading">
+        家計簿カレンダー
+    </h3>
+    <div class = "main__blog--post-calendar">
+      <%= month_calendar events: @shoppings do |datetime, shoppings| %>
+        <%= datetime.day %>
+
+        <% shoppings.each do |shopping| %>
+          <div>
+            <%= link_to end_user_shopping_path(current_end_user,shopping) do %>
+              <%= shopping.total_price %>円
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</main>
 

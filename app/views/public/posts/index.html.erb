@@ -1,24 +1,52 @@
-<div class = "heading-title">
-  <p>ユーザー情報</p>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
+
+    </p>
+    <p class="main-visual__content--text">
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+    </p>
+  </div>
 </div>
-<div class = "user-info">
-  <%= render 'public/end_users/info', end_user: current_end_user %>
-</div>
-<div class = "heading-title">
-  <p>投稿一覧</p>
-</div>
-<div class = "tag-list">
-  <p>タグリスト</p>
-  <% @tag_list.each do |list| %>
-    <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
-    <%= "(#{list.posts.count})" %>
-  <% end %>
-</div>
-<div class = "link">
-  <%= link_to '投稿順', posts_path %>
-  <%= link_to 'いいね数順', posts_favorited_ranking_path %>
-  <%= link_to 'コメント数順', posts_commented_ranking_path %>
-</div>
-<div class = "post-index">
-  <%= render 'index', posts: @posts %>
-</div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <h3 class = "main__sidebar--heading">
+      ユーザー情報
+    </h3>
+    <div class = "user-info">
+      <%= render 'public/end_users/info', end_user: current_end_user %>
+    </div>
+    <div id = "end_user_<%= current_end_user.id %>">
+      <%= render 'public/relationships/form', end_user: current_end_user %>
+    </div>
+    <h3 class="main__sidebar--heading">
+      投稿写真一覧
+    </h3>
+    <div class = "main__sidebar--post-image-index">
+      <%= render 'public/posts/posts_images_index', posts: @posts %>
+    </div>
+  </div>
+  <div class = "main__blog">
+    <h3 class = "main__blog--heading">
+      タグリスト
+    </h3>
+    <div class = "main__blog--tag-list">
+      <% @tag_list.each do |list| %>
+        <%= link_to list.name, tag_posts_path(tag_id: list.id) %>
+        <%= "(#{list.posts.count})" %>
+      <% end %>
+    </div>
+    <h3 class = "main__blog--heading">
+      投稿一覧
+    </h3>
+    <div class="main__blog--ranking">
+      <%= link_to '投稿順', posts_path %>
+      <%= link_to 'いいね数順', posts_favorited_ranking_path %>
+      <%= link_to 'コメント数順', posts_commented_ranking_path %>
+    </div>
+    <div class = "main__blog--post-index">
+      <%= render 'index', posts: @posts %>
+    </div>
+  </div>
+</main>

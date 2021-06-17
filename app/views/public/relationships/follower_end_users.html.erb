@@ -1,6 +1,36 @@
-<h2>Follower Users</h2>
-<% if @end_users.empty? %>
-  <p>フォロワーはいません</p>
-<% else %>
-  <%= render 'public/end_users/index',end_users: @end_users %>
-<% end %>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
+
+    </p>
+    <p class="main-visual__content--text">
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+    </p>
+  </div>
+</div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <h3 class = "main__sidebar--heading">
+      ユーザー情報
+    </h3>
+    <div class = "user-info">
+      <%= render 'public/end_users/info', end_user: current_end_user %>
+    </div>
+    <div id = "end_user_<%= current_end_user.id %>">
+      <%= render 'public/relationships/form', end_user: current_end_user %>
+    </div>
+  </div>
+  <div class = "main__blog">
+    <h3 class = "main__blog--heading">
+      フォロワー一覧
+    </h3>
+    <div class="main__blog--user-index">
+      <% if @end_users.empty? %>
+        <p>フォロワーはいません</p>
+      <% else %>
+        <%= render 'public/end_users/index',end_users: @end_users %>
+      <% end %>
+    </div>
+  </div>
+</main>

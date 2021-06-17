@@ -1,50 +1,74 @@
-<div class = "heading-title">
-  <% if @end_user == current_end_user %>
-    <p>マイページ</p>
-  <% else %>
-    <p>ユーザー情報</p>
-  <% end %>
-</div>
-<div class = "user-info">
-  <%= render 'info', end_user: @end_user %>
-  <div id = "end_user_<%= @end_user.id %>">
-    <%= render 'public/relationships/form', end_user: @end_user %>
-  </div>
-</div>
-<% if @end_user != current_end_user %>
-  <div class = "heading-title">
-    <p>ユーザー詳細</p>
-  </div>
-  <div class = "user-detail">
-    <table>
-      <tr>
-        <td>
-          <%= attachment_image_tag @end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %><br>
-          <%= @end_user.last_name + @end_user.first_name %>
-        </td>
-        <td><%= @end_user.introduction %></td>
-        <% if @end_user == current_end_user %>
-          <td><%= link_to '編集', edit_end_user_path(current_end_user) %></td>
-        <% end %>
-      </tr>
-    </table>
-  </div>
-<% end %>
-<div class = "heading-title">
-  <p>投稿一覧</p>
-</div>
-<div class = "post-index">
-  <%= render 'public/posts/index', posts: @posts %>
-</div>
-<div class = "post-calendar">
-  <% if @end_user == current_end_user %>
-    <%= month_calendar events: @posts do |datetime, posts| %>
-      <%= datetime.day %>
-      <% posts.each do |post| %>
-        <div>
-          <%= link_to post.title, post_path(post) %>
-        </div>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
+      <% if @end_user == current_end_user %>
+
+      <% else %>
+
       <% end %>
-    <% end %>
-  <% end %>
+    </p>
+    <p class="main-visual__content--text">
+      <% if @end_user == current_end_user %>
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+      <% else %>
+
+      <% end %>
+    </p>
+  </div>
 </div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <h3 class = "main__sidebar--heading">
+      ユーザー情報
+    </h3>
+    <div class = "user-info">
+      <%= render 'info', end_user: @end_user %>
+      <div id = "end_user_<%= @end_user.id %>">
+        <%= render 'public/relationships/form', end_user: @end_user %>
+      </div>
+    </div>
+    <h3 class="main__sidebar--heading">
+      投稿写真一覧
+    </h3>
+    <div class = "main__sidebar--post-image-index">
+      <%= render 'public/posts/post_image_index', posts: @posts %>
+    </div>
+  </div>
+  <div class = "main__blog">
+    <% if @end_user == current_end_user %>
+      <h3 class = "main__blog--heading">
+        投稿カレンダー
+      </h3>
+      <div class = "main__blog--post-calendar">
+        <% if @end_user == current_end_user %>
+          <%= month_calendar events: @posts do |datetime, posts| %>
+            <%= datetime.day %>
+            <% posts.each do |post| %>
+              <div>
+                <%= link_to post.title, post_path(post) %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <h3 class = "main__blog--heading">
+        <%= @end_user.last_name + @end_user.first_name %>の投稿一覧
+      </h3>
+      <div class="main__blog--ranking">
+        <% if @end_user == current_end_user %>
+          <%= link_to 'フォロワー数順',end_users_follower_ranking_path %>
+          <%= link_to '投稿数順', end_users_post_ranking_path %>
+        <% else %>
+          <%= link_to '投稿順', posts_path %>
+          <%= link_to 'いいね数順', posts_favorited_ranking_path %>
+          <%= link_to 'コメント数順', posts_commented_ranking_path %>
+        <% end %>
+      </div>
+      <div class = "main__blog--post-index">
+        <%= render 'public/posts/index', posts: @posts %>
+      </div>
+    <% end %>
+  </div>
+</main>
