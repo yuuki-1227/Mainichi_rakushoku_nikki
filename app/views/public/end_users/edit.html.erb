@@ -18,34 +18,56 @@
   </div>
 </div>
 <main class="main">
-  <%= form_with model:@end_user, local:true do |f| %>
 
-    <div class="form-group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: "form-control last_name" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: "form-control first_name" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :kana_last_name %>
-      <%= f.text_field :kana_last_name, class: "form-control kana_last_name" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :kana_first_name %>
-      <%= f.text_field :kana_first_name, class: "form-control kana_first_name" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :profile_image %>
-      <%= f.attachment_field :profile_image, class: "form-control-file profile_image" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :introduction %>
-      <%= f.text_area :introduction, class: "form-control introduction" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit '更新', class: 'btn btn-secondary' %>
-    </div>
-  <% end %>
+  <%= form_with model:@end_user, local:true do |f| %>
+    <table class="information-form__field">
+      <tr>
+        <td>
+          <%= f.label :姓 %></br>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        </td>
+        <td>
+          <%= f.label :名 %><br />
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :セイ %><br />
+          <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %>
+        </td>
+        <td>
+          <%= f.label :メイ %><br />
+          <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :パスワード（確認用） %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </td>
+      </tr>
+      <tr>
+        <td class = "actions">
+          <%= f.submit '更新', class: 'btn btn-secondary' %>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
 </main>
