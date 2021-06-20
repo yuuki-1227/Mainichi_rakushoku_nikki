@@ -1,9 +1,11 @@
-<table class="user-info__table">
-  <tr>
-    <td class="user-info__table--profile_image"><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></td>
-    <td>
-      <%= end_user.last_name + end_user.first_name %><br>
-      <%= end_user.introduction %>
-    </td>
-  </tr>
-</table>
+<% if end_user_signed_in? %>
+  <table class="user-info__table">
+    <tr>
+      <td class="user-info__table--profile_image"><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></td>
+      <td>
+        <%= end_user.last_name + end_user.first_name %><br>
+        <%= end_user.introduction %>
+      </td>
+    </tr>
+  </table>
+<% end %>

@@ -1,6 +1,8 @@
-<h2>Posts search for "<%= @content %>"</h2>
-<% if @model == 'end_user' %>
-  <%= render 'public/end_users/index', end_users: @records %>
-<% else @model == 'post' %>
-  <%= render 'public/posts/index', posts: @records %>
+<% if end_user_signed_in? %>
+  <h2>Posts search for "<%= @content %>"</h2>
+  <% if @model == 'end_user' %>
+    <%= render 'public/end_users/index', end_users: @records %>
+  <% else @model == 'post' %>
+    <%= render 'public/posts/index', posts: @records %>
+  <% end %>
 <% end %>

@@ -11,15 +11,17 @@
 </div>
 <main class = "main">
   <div class = "main__sidebar">
-    <h3 class = "main__sidebar--heading">
-      ユーザー情報
-    </h3>
-     <div class = "user-info">
-      <%= render 'public/end_users/info', end_user: current_end_user %>
-    </div>
-    <div id = "end_user_<%= current_end_user.id %>">
-      <%= render 'public/relationships/form', end_user: current_end_user %>
-    </div>
+    <% if end_user_signed_in? %>
+      <h3 class = "main__sidebar--heading">
+        ユーザー情報
+      </h3>
+       <div class = "user-info">
+        <%= render 'public/end_users/info', end_user: current_end_user %>
+      </div>
+      <div id = "end_user_<%= current_end_user.id %>">
+        <%= render 'public/relationships/form', end_user: current_end_user %>
+      </div>
+    <% end %>
   </div>
   <div class = "main__blog">
     <h3 class = "main__blog--heading">

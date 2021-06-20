@@ -1,19 +1,8 @@
 <div class = "main-visual">
   <div class="main-visual__content">
-    <p class="main-visual__content--title">
-      <% if @end_user == current_end_user %>
-
-      <% else %>
-
-      <% end %>
-    </p>
     <p class="main-visual__content--text">
-      <% if @end_user == current_end_user %>
         毎日毎食のお料理を投稿しよう！<br>
         新たな発見が見つかるかも！！！！
-      <% else %>
-
-      <% end %>
     </p>
   </div>
 </div>
@@ -49,17 +38,19 @@
           <td><%= @post.explain %></td>
           <td><%= @post.cooking_method %></td>
           <td>
-            <% if @post.end_user_id == current_end_user.id %>
-              <% if @post.release_status == true %>
-                <p>公開中</p>
-              <% else %>
-                <p>非公開</p>
+            <% if end_user_signed_in? %>
+              <% if @post.end_user_id == current_end_user.id %>
+                <% if @post.release_status == true %>
+                  <p>公開中</p>
+                <% else %>
+                  <p>非公開</p>
+                <% end %>
               <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if @post.end_user_id == current_end_user.id %>
-              <%= link_to '編集', edit_post_path(@post) %>
+            </td>
+            <td>
+              <% if @post.end_user_id == current_end_user.id %>
+                <%= link_to '編集', edit_post_path(@post) %>
+              <% end %>
             <% end %>
           </td>
         </tr>
