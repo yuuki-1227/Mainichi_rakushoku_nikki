@@ -11,33 +11,30 @@
 </div>
 <main class="main">
   <%= form_with model:@contact, url: contacts_confirm_path, method: :post, local: true do |f| %>
-    <div class="form-group">
-      <%= f.label :name, 'お名前' %>
-      <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :email, '返信先メールアドレス' %>
-      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :phone_number, '電話番号' %>
-      <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :subject, 'お問い合わせ件名' %>
-      <%= f.select :subject, Contact.subject_names.keys, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :message, 'メッセージ' %>
-      <%= f.text_area :message, size: '20x10', class: 'form-control' %>
-    </div>
-
-    <div>
-      <%= f.submit '入力内容確認' %>
-    </div>
+    <table>
+      <tr>
+        <td><%= f.label :name, 'お名前' %></td>
+        <td><%= f.text_field :name, autofocus: true, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :email, '返信先メールアドレス' %></td>
+        <td><%= f.email_field :email, autofocus: true, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :phone_number, '電話番号' %></td>
+        <td><%= f.text_field :phone_number, autofocus: true, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :subject, 'お問い合わせ件名' %></td>
+        <td><%= f.select :subject, Contact.subject_names.keys, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :message, 'メッセージ' %></td>
+        <td><%= f.text_area :message, size: '20x10', class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit '入力内容確認' %></td>
+      </tr>
+    </table>
   <% end %>
 </main>
