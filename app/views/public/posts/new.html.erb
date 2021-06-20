@@ -27,39 +27,39 @@
     </h3>
     <div class="main__blog--new">
       <%= form_with model:@post,local:true do |f| %>
+      <table>
+        <tr>
+          <td><%= f.label :start_time, '日にち' %></td>
+          <td><%= f.date_field :start_time, class: 'form-control datetime' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :title, 'タイトル' %></td>
+          <td><%= f.text_field :title, class: 'form-control post_title' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :tag, 'タグ' %></td>
+          <td><%= f.text_area :name, :placeholder => "スペースを入力することで複数のタグを付けることができます。", class: 'form-control post_tag' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :explain, '概要' %></td>
+          <td><%= f.text_area :explain, class: 'form-control post_explain' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :image, '写真' %></td>
+          <td><%= f.attachment_field :image, class: 'form-control post_image' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :three_meals, '' %></td>
+          <td><%= f.select :three_meals, Post.three_meals.keys, class: 'form-control post_image' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :cooking_method, '料理方法' %></td>
+          <td><%= f.text_area :cooking_method, class: 'form-control post_cooking_method' %></td>
+        </tr>
 
-        <div class="form-group">
-          <%= f.label :start_time %>
-          <%= f.date_field :start_time, class: 'form-control datetime' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title, class: 'form-control post_title' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :tag %>
-          <%= f.text_area :name, :placeholder => "スペースを入力することで複数のタグを付けることができます。", class: 'form-control post_tag' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :explain %>
-          <%= f.text_area :explain, class: 'form-control post_explain' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :image %>
-          <%= f.attachment_field :image, class: 'form-control post_image' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :three_meals %>
-          <%= f.select :three_meals, Post.three_meals.keys, class: 'form-control post_image' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :cooking_method %>
-          <%= f.text_area :cooking_method, class: 'form-control post_cooking_method' %>
-        </div>
-
-        <div id="star">
-          <label>Rating</label>
-        </div>
+        <tr id="star">
+          <td>レビュー</td>
+        </tr>
 
         <script>
         $('#star').raty({
@@ -72,10 +72,10 @@
         });
         </script>
 
-        <div class="form-group">
-          <%= f.submit  '投稿', class: 'btn btn-success' %>
-        </div>
-      <% end %>
-    </div>
+        <tr>
+          <td><%= f.submit  '投稿', class: 'btn btn-success' %></td>
+        </tr>
+    </table>
+    <% end %>
   </div>
 </main>

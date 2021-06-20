@@ -1,29 +1,42 @@
-<div class = "heading-title">
-  <p>ログイン画面</p>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
+
+    </p>
+    <p class="main-visual__content--text">
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+    </p>
+  </div>
 </div>
-<div class = "information-form">
-  <%= form_with model:@end_user, url:end_user_session_path, local:true do |f| %>
-    <div class = "error_messages">
-      <%= render "public/end_users/shared/error_messages", resource: resource %>
-    </div>
-    <table class = "information-form__field">
-      <tr>
-        <td>
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </td>
-      </tr>
-      <tr>
-        <td class="actions">
-          <%= f.submit "Log in" %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
-</div>
+<main class="main">
+  <div class = "main__heading-title">
+    <p>ログイン画面</p>
+  </div>
+  <div class = "information-form">
+    <%= form_with model:@end_user, url:end_user_session_path, local:true do |f| %>
+      <div class = "error_messages">
+        <%= render "public/end_users/shared/error_messages", resource: resource %>
+      </div>
+      <table class = "information-form__field">
+        <tr>
+          <td>
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="actions">
+            <%= f.submit "Log in" %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</main>
