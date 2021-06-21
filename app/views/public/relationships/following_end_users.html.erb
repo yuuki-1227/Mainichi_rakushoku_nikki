@@ -15,10 +15,10 @@
       ユーザー情報
     </h3>
     <div class = "user-info">
-      <%= render 'public/end_users/info', end_user: current_end_user %>
+      <%= render 'public/end_users/info', end_user: @end_user %>
     </div>
-    <div id = "end_user_<%= current_end_user.id %>">
-      <%= render 'public/relationships/form', end_user: current_end_user %>
+    <div id = "end_user_<%= @end_user.id %>">
+      <%= render 'public/relationships/form', end_user: @end_user %>
     </div>
   </div>
   <div class = "main__blog">

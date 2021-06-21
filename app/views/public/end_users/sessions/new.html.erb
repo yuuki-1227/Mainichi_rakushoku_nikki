@@ -21,19 +21,19 @@
       <table class = "information-form__field">
         <tr>
           <td>
-            <%= f.label :email %><br />
+            <%= f.label :email, 'メールアドレス' %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </td>
         </tr>
         <tr>
           <td>
-            <%= f.label :password %><br />
+            <%= f.label :password, 'パスワード' %><br />
             <%= f.password_field :password, autocomplete: "current-password" %>
           </td>
         </tr>
         <tr>
           <td class="actions">
-            <%= f.submit "Log in" %>
+            <%= f.submit "ログイン" %>
           </td>
         </tr>
       </table>

@@ -26,17 +26,13 @@
       <table>
         <tr>
           <td><%= attachment_image_tag @post, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
-          <td class = "post-star" data-score = "<%= @post.rate %>"></td>
           <td>
             <% @post_tags.each do |tag| %>
               <%= link_to tag.name, tag_posts_path(tag_id: tag.id) %>
               <%= "(#{tag.posts.count})" %>
             <% end %>
           </td>
-          <td><%= @post.title %><td>
           <td><%= @post.three_meals %></td>
-          <td><%= @post.explain %></td>
-          <td><%= @post.cooking_method %></td>
           <td>
             <% if end_user_signed_in? %>
               <% if @post.end_user_id == current_end_user.id %>
@@ -53,6 +49,14 @@
               <% end %>
             <% end %>
           </td>
+        </tr>
+        <tr>
+          <td><%= @post.title %><td>
+          <td class = "post-star" data-score = "<%= @post.rate %>"></td>
+        </tr>
+        <tr>
+          <td><%= @post.explain %></td>
+          <td><%= @post.cooking_method %></td>
         </tr>
       </table>
       <script>

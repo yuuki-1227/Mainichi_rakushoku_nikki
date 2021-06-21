@@ -43,6 +43,12 @@
       </tr>
       <tr>
         <td>
+          <%= f.label :profile_image, '写真' %><br>
+          <%= f.attachment_field :profile_image, class: 'form-control profile_image' %>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <%= f.label :メールアドレス %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </td>

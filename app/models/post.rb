@@ -36,4 +36,9 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+
+  def active_for_authentication?
+    super && (release_status == false)
+  end
+
 end

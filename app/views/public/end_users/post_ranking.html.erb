@@ -1,6 +1,36 @@
-<h1>ユーザー情報</h1>
-<%= render 'info', end_user: current_end_user %>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
 
-<h1>ユーザー一覧</h1>
-
-<%= render 'index', end_users: @post_ranking_end_users %>
+    </p>
+    <p class="main-visual__content--text">
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+    </p>
+  </div>
+</div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <h3 class = "main__sidebar--heading">
+      ユーザー情報
+    </h3>
+    <div class = "user-info">
+      <%= render 'info', end_user: current_end_user %>
+    </div>
+    <div id = "end_user_<%= current_end_user.id %>">
+      <%= render 'public/relationships/form', end_user: current_end_user %>
+    </div>
+  </div>
+  <div class = "main__blog">
+    <h3 class = "main__blog--heading">
+      投稿数ランキング
+    </h3>
+    <div class="main__blog--ranking">
+      <%= link_to 'フォロワー数順',end_users_follower_ranking_path %>
+      <%= link_to '投稿数順', end_users_post_ranking_path %>
+    </div>
+    <div class = "main__blog--user-index">
+      <%= render 'index', end_users: @post_ranking_end_users %>
+    </div>
+  </div>
+</main>

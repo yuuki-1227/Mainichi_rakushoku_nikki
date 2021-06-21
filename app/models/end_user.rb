@@ -37,4 +37,9 @@ class EndUser < ApplicationRecord
   def unfollow(end_user_id)
     followers.find_by(followed_id: end_user_id).destroy
   end
+
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end

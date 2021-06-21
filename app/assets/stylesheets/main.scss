@@ -5,14 +5,14 @@
 }
 
 .main {
-  width: 1000px;
+  width: 1200px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
   padding: 70px 0;
 
     &__sidebar {
-      width: 400px;
+      width: 500px;
       margin-right: 30px;
 
         &--post-image-index {
@@ -36,10 +36,14 @@
         &--new-foods-form {
 
         }
+
+        &--search-index {
+
+        }
     }
 
     &__blog {
-      width: 600px;
+      width: 700px;
 
         &--heading {
           border-bottom: 8px solid #f7f7f7;

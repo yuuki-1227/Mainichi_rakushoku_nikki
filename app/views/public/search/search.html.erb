@@ -1,8 +1,38 @@
-<% if end_user_signed_in? %>
-  <h2>Posts search for "<%= @content %>"</h2>
-  <% if @model == 'end_user' %>
-    <%= render 'public/end_users/index', end_users: @records %>
-  <% else @model == 'post' %>
-    <%= render 'public/posts/index', posts: @records %>
-  <% end %>
-<% end %>
+<div class = "main-visual">
+  <div class="main-visual__content">
+    <p class="main-visual__content--title">
+
+    </p>
+    <p class="main-visual__content--text">
+        毎日毎食のお料理を投稿しよう！<br>
+        新たな発見が見つかるかも！！！！
+    </p>
+  </div>
+</div>
+<main class = "main">
+  <div class = "main__sidebar">
+    <% if end_user_signed_in? %>
+      <h3 class = "main__sidebar--heading">
+        ユーザー情報
+      </h3>
+      <div class = "user-info">
+        <%= render 'public/end_users/info', end_user: current_end_user %>
+      </div>
+      <div id = "end_user_<%= current_end_user.id %>">
+        <%= render 'public/relationships/form', end_user: current_end_user %>
+      </div>
+    <% end %>
+  </div>
+  <div class = "main__blog">
+    <h3 class = "main__blog--heading">
+      検索結果 "<%= @content %>"
+    </h3>
+    <div class="main__blog--search-index">
+      <% if @model == 'end_user' %>
+        <%= render 'public/end_users/index', end_users: @records %>
+      <% else @model == 'post' %>
+        <%= render 'public/posts/index', posts: @records %>
+      <% end %>
+    </div>
+  </div>
+</main>

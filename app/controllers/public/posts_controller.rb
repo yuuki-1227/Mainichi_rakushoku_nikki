@@ -1,6 +1,5 @@
 class Public::PostsController < ApplicationController
-  
-  
+
 
   def index
     @posts = Post.all
@@ -8,6 +7,8 @@ class Public::PostsController < ApplicationController
   end
 
   def favorited_ranking
+    @posts = Post.all
+    @tag_list = Tag.all
     # いいね数によって並び替え
     # sortとはrubyのメソッド
     # a.favorited_end_users.size、b.favorited_end_users.sizeはそれぞれ各投稿のいいね数
@@ -15,6 +16,8 @@ class Public::PostsController < ApplicationController
   end
 
   def commented_ranking
+    @posts = Post.all
+    @tag_list = Tag.all
     # コメント数によって並び替え
     # sortとはrubyのメソッド
     # a.commented_end_users.size、b.commented_end_users.sizeはそれぞれ各投稿のいいね数
@@ -38,7 +41,7 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:name].split(nil)  # @postを参照してタグの名前も一緒に送信する。例えば「"スポーツ""勉強"」
     if @post.save                               # split(nil):送信されてきた値を、スペースで区切って配列化する。
       @post.save_tag(tag_list)                  # save_tagはpost.rbに定義
-      redirect_to posts_path
+      redirect_to end_user_path(current_end_user)
     else
       render "new"
     end
