@@ -24,7 +24,7 @@
       新規お買い物登録
     </h3>
     <div class="main__sidebar--new-foods-form">
-      <%= form_with model:@food, url:foods_path, local:true do |f| %>
+      <%= form_with model:@food, url:end_user_shopping_foods_path(current_end_user,@shopping.id), local:true do |f| %>
         <div class="form-group">
           <%= f.label :name, '食材名' %>
           <%= f.text_field :name, class: 'form-control name' %>
@@ -39,6 +39,9 @@
         </div>
         <div class="form-group">
           <%= f.submit '登録', class: 'btn btn-success' %>
+        </div>
+        <div class="form-group">
+          <%= f.hidden_field :shopping_id, :value => @shopping.id %>
         </div>
       <% end %>
     </div>
@@ -68,8 +71,8 @@
           <td><%= food.name %></td>
           <td><%= food.amount %>個</td>
           <td><%= food.price %>円</td>
-          <td><%= link_to '編集', edit_food_path(food) %></td>
-          <td><%= link_to '削除', food_path(food), method: :delete %></td>
+          <td><%= link_to '編集', edit_end_user_shopping_food_path(@shopping.end_user, @shopping.id, food) %></td>
+          <td><%= link_to '削除', end_user_shopping_food_path(@shopping.end_user, @shopping.id,food), method: :delete %></td>
         </tr>
         <% end %>
       </table>

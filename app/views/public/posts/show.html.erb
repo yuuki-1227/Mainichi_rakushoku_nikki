@@ -52,22 +52,23 @@
         </tr>
         <tr>
           <td><%= @post.title %><td>
-          <td class = "post-star" data-score = "<%= @post.rate %>"></td>
+          <td class = "post-star" data-score = "<%= @post.rate %>">
+            <script>
+              $('.post-star').raty({
+                readOnly: true,
+                score: function() {
+                  return $(this).attr('data-score');
+                },
+                path: '/assets/'
+              });
+            </script>
+          </td>
         </tr>
         <tr>
           <td><%= @post.explain %></td>
           <td><%= @post.cooking_method %></td>
         </tr>
       </table>
-      <script>
-        $('.post-star').raty({
-          readOnly: true,
-          score: function() {
-            return $(this).attr('data-score');
-          },
-          path: '/assets/'
-        });
-      </script>
     </div>
     <div id = "post_<%= @post.id %>">
       <%= render 'public/favorites/favorite',post: @post %>

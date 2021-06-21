@@ -41,12 +41,13 @@ Rails.application.routes.draw do
       get "/unsubscribe" => "end_users#unsubscribe"
       patch "/withdraw" => "end_users#withdraw"
       # 買い物
-      resources :shoppings
+      resources :shoppings do
+        # 食材
+        resources :foods, only:[:create, :edit, :update, :destroy]
+        delete "foods/destroy_all" => "foods#destroy_all"
+      end
     end
 
-    # 食材
-    resources :foods, only:[:index, :show, :create, :edit, :update, :destroy]
-    delete "foods/destroy_all" => "foods#destroy_all"
     # 投稿記事いいね数ランキング
     get "/posts/favorited_ranking" => "posts#favorited_ranking"
      # 投稿記事コメント数ランキング
