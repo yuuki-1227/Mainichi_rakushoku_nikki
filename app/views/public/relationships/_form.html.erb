@@ -5,7 +5,9 @@
 
 <% if end_user_signed_in? %>
   <% if end_user.id == current_end_user.id %>
-    <%= link_to '編集',edit_end_user_path(end_user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{end_user.id}" %>
+    <%= link_to edit_end_user_path(end_user),class: "btn btn-outline-secondary btn-block edit_user_#{end_user.id}" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
   <% else %>
     <% if current_end_user.following?(end_user) %>
       <%= link_to 'フォローを外す', end_user_unfollow_path(end_user), method: :post, remote: true %>

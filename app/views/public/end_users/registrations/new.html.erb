@@ -9,17 +9,17 @@
     </p>
   </div>
 </div>
-<main class="main">
-  <div class = "heading-title">
-    <p>新規登録</p>
-  </div>
-  <div class = "information-form">
+<main class="main-form">
+  <p class = "main-form__heading-title">
+    新規登録
+  </p>
+  <div class = "main-form__information-form">
     <%= form_with model:@end_user, url:end_user_registration_path, local:true do |f| %>
       <div class = "error_messages">
         <%= render "public/end_users/shared/error_messages", resource: resource %>
       </div>
 
-      <table class="information-form__field">
+      <table class="main-form__information-form--field">
         <tr>
           <td>
             <%= f.label :姓 %></br>
@@ -63,7 +63,7 @@
         </tr>
         <tr>
           <td class = "actions">
-            <%= f.submit "新規登録" %>
+            <%= f.submit "新規登録", class:"button" %>
           </td>
         </tr>
       </table>
