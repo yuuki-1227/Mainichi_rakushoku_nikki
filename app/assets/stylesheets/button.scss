@@ -9,9 +9,13 @@
   color         : #ffffff;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
-  border        : 2px solid rgba(0, 255, 0, 0.68);    /* 枠の指定 */
+  border        : 2px solid rgba(0, 179, 89, 1);    /* 枠の指定 */
 }
 .button:hover {
-  color         : rgba(0, 255, 0, 0.68);     /* 背景色     */
+  color         : rgba(0, 179, 89, 1);     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
+}
+
+.btn {
+  width: 100%;
 }

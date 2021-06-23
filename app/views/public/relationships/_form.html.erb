@@ -5,14 +5,24 @@
 
 <% if end_user_signed_in? %>
   <% if end_user.id == current_end_user.id %>
-    <%= link_to edit_end_user_path(end_user),class: "btn btn-outline-secondary btn-block edit_user_#{end_user.id}" do %>
-      <i class="fas fa-user-cog"></i>
+    <%= link_to edit_end_user_path(end_user) do %>
+      <button class="btn btn-secondary btn-lg">
+        <i class="fas fa-user-cog"></i> プロフィール編集
+      </button>
     <% end %>
   <% else %>
     <% if current_end_user.following?(end_user) %>
-      <%= link_to 'フォローを外す', end_user_unfollow_path(end_user), method: :post, remote: true %>
+      <%= link_to end_user_unfollow_path(end_user), method: :post, remote: true do %>
+        <button class="btn btn-secondary btn-lg">
+          フォローを外す
+        </button>
+      <% end %>
     <% else %>
-        <%= link_to 'フォローする', end_user_follow_path(end_user), method: :post, remote: true %>
+        <%= link_to end_user_follow_path(end_user), method: :post, remote: true do %>
+          <button class="btn btn-secondary btn-lg">
+            フォローする
+          </button>
+        <% end %>
     <% end %>
   <% end %>
 <% end %>

@@ -16,9 +16,9 @@
     </h3>
     <div class = "user-info">
       <%= render 'info', end_user: current_end_user %>
-    </div>
-    <div id = "end_user_<%= current_end_user.id %>">
-      <%= render 'public/relationships/form', end_user: current_end_user %>
+      <div id = "end_user_<%= current_end_user.id %>">
+        <%= render 'public/relationships/form', end_user: current_end_user %>
+      </div>
     </div>
   </div>
   <div class = "main__blog">

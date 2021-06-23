@@ -34,6 +34,16 @@
     <div class = "main__sidebar--post-image-index">
       <%= render 'public/posts/posts_images_index', posts: @posts %>
     </div>
+    <% if @end_user == current_end_user %>
+      <h3 class = "main__sidebar--heading">
+        家計簿
+      </h3>
+      <div class = "main__sidebar--shopping-link">
+        <%= link_to end_user_shoppings_path(current_end_user) do %>
+          <i class="fas fa-calculator"></i> 家計簿画面へ
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class = "main__blog">
     <% if @end_user == current_end_user %>

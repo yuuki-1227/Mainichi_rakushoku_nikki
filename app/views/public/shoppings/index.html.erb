@@ -21,6 +21,12 @@
       </div>
     </div>
     <h3 class = "main__sidebar--heading">
+      お買い物金額合計
+    </h3>
+    <div class="main__sidebar--shopping-total-price">
+      <%= @shoppings.all.sum(:total_price) %>円
+    </div>
+    <h3 class = "main__sidebar--heading">
       新規お買い物登録
     </h3>
     <div class="main__sidebar--new-shopping-form">
