@@ -24,22 +24,32 @@
       新規お買い物登録
     </h3>
     <div class="main__sidebar--new-foods-form">
-      <%= form_with model:@food, url:end_user_shopping_foods_path(current_end_user,@shopping.id), local:true do |f| %>
-        <div class="form-group">
-          <%= f.label :name, '食材名' %>
-          <%= f.text_field :name, class: 'form-control name' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :amount, '個数' %>
-          <%= f.text_field :amount, class: 'form-control amount' %>個
-        </div>
-        <div class="form-group">
-          <%= f.label :price, '値段' %>
-          <%= f.text_field :price, class: 'form-control price' %>円
-        </div>
-        <div class="form-group">
-          <%= f.submit '登録', class: 'btn btn-success' %>
-        </div>
+      <%= form_with model:@food, url:end_user_shopping_foods_path(current_end_user,@shopping.id), method: :post, local:true do |f| %>
+        <table>
+          <tr>
+            <td>
+              <%= f.label :name, '食材名' %>
+              <%= f.text_field :name, class: 'form-control name' %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :amount, '個数' %>
+              <%= f.text_field :amount, class: 'form-control amount' %>個
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :price, '値段' %>
+              <%= f.text_field :price, class: 'form-control price' %>円
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.submit '登録', class: 'btn btn-success' %>
+            </td>
+          </tr>
+        </table>
         <div class="form-group">
           <%= f.hidden_field :shopping_id, :value => @shopping.id %>
         </div>

@@ -5,29 +5,42 @@
 }
 
 .header {
-  width: 90%;
+  width: 1200px;
   height: 150px;
   padding: 15px 0;
   margin: 0 auto;
   font-size: 20px;
-  text-align: center;
+  display: flex;
 
-  &__header-top {
-    width: 100%;
-    height: 100px;
-    text-align: center;
+  &__header-left {
+    width: 400px;
+    height: 150px;
     padding: 10px 0;
     margin: o auto;
+    display: flex;
 
-      &--list {
-        list-style: none;
-        display: inline-block;
-        margin: 0 20px;
-      }
+    &--title {
+      margin-left: 20px;
+      margin-top: 50px;
+    }
+
   }
 
-  &__header-bottom {
-    width: 100%;
-    height: 50px;
+  &__header-right {
+    width: 800px;
+    height: 150px;
+    margin-top: 50px;
+    text-align: right;
+
+    &--list {
+      list-style: none;
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    &--bottom {
+
+    }
+
   }
 }

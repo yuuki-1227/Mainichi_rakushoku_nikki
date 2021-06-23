@@ -1,58 +1,61 @@
 <header class = "header">
-  <nav class="header__header-top">
-    <% if end_user_signed_in? %>
-      <li class="header__header-top--list">
-        <%= link_to new_post_path do %>
-          <i class="fas fa-mail-bulk"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list">
-        <%= link_to end_user_path(current_end_user) do %>
-          <i class="fas fa-home"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list">
-        <%= link_to posts_path do %>
-          <i class="fas fa-list"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list">
-        <%= link_to end_users_path do %>
-          <i class="fas fa-users"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list">
-        <%= link_to end_user_shoppings_path(current_end_user) do %>
-          <i class="fas fa-calculator"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list"><%= link_to 'お問い合わせ',  new_contact_path %></li>
-      <li class="header__header-top--list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %></li>
-    <% elsif admin_signed_in? %>
-      <li class="header__header-top--list"><%= link_to '投稿一覧',  admin_posts_path %></li>
-      <li class="header__header-top--list"><%= link_to 'ユーザー一覧',  admin_end_users_path %></li>
-      <li class="header__header-top--list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-    <% else %>
-      <li class="header__header-top--list"><%= link_to ' About',  about_path %></li>
-      <li class="header__header-top--list">
-        <%= link_to posts_path do %>
-          <i class="fas fa-list"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list">
-        <%= link_to new_end_user_registration_path do %>
-          <i class="fas fa-user-plus"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list">
-        <%= link_to new_end_user_session_path do %>
-          <i class="fas fa-sign-in-alt"></i>
-        <% end %>
-      </li>
-      <li class="header__header-top--list"><%= link_to 'お問い合わせ',  new_contact_path %></li>
-    <% end %>
+  <nav class="header__header-left">
+    <div class="header__header-left--logo">
+      <%= link_to root_path do %>
+        <%= image_tag image_url('instagram_profile_image.png'), :size => '100x100' %>
+      <% end %>
+    </div>
+    <h2 class="header__header-left--title">まいにち楽食日記</h2>
   </nav>
-  <nav class = "header__header-bottom">
-    <%= render 'public/search/form' %>
+  <nav class = "header__header-right">
+      <% if end_user_signed_in? %>
+        <li class="header__header-right--list">
+          <%= link_to new_post_path do %>
+            <i class="fas fa-mail-bulk"></i>
+          <% end %>
+        </li>
+        <li class="header__header-right--list">
+          <%= link_to end_user_path(current_end_user) do %>
+            <i class="fas fa-home"></i>
+          <% end %>
+        </li>
+        <li class="header__header-right--list">
+          <%= link_to posts_path do %>
+            <i class="fas fa-list"></i>
+          <% end %>
+        </li>
+        <li class="header__header-right--list">
+          <%= link_to end_users_path do %>
+            <i class="fas fa-users"></i>
+          <% end %>
+        </li>
+        <li class="header__header-right--list"><%= link_to 'お問い合わせ',  new_contact_path %></li>
+        <li class="header__header-right--list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %></li>
+      <% elsif admin_signed_in? %>
+        <li class="header__header-right--list"><%= link_to '投稿一覧',  admin_posts_path %></li>
+        <li class="header__header-right--list"><%= link_to 'ユーザー一覧',  admin_end_users_path %></li>
+        <li class="header__header-right--list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+      <% else %>
+        <li class="header__header-right--list"><%= link_to ' About',  about_path %></li>
+        <li class="header__header-right--list">
+          <%= link_to posts_path do %>
+            <i class="fas fa-list"></i>
+          <% end %>
+        </li>
+        <li class="header__header-right--list">
+          <%= link_to new_end_user_registration_path do %>
+            <i class="fas fa-user-plus"></i>
+          <% end %>
+        </li>
+        <li class="header__header-right--list">
+          <%= link_to new_end_user_session_path do %>
+            <i class="fas fa-sign-in-alt"></i>
+          <% end %>
+        </li>
+        <li class="header__header-right--list"><%= link_to 'お問い合わせ',  new_contact_path %></li>
+      <% end %>
+    <div class="header__header-right--bottom">
+      <%= render 'public/search/form' %>
+    </div>
   </nav>
 </header>
