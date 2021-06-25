@@ -14,13 +14,19 @@
     <h3 class = "main__sidebar--heading">
       ユーザー情報
     </h3>
+    <div class = "user-info">
+      <%= render 'public/end_users/info', end_user: current_end_user %>
+      <div id = "end_user_<%= current_end_user.id %>">
+        <%= render 'public/relationships/form', end_user: current_end_user %>
+      </div>
+    </div>
   </div>
   <div class = "main__blog">
     <h3 class = "main__blog--heading">
       お買い物詳細情報編集
     </h3>
     <div class="main__blog--edit">
-      <%= form_with model:@food, url:food_path, method: :patch, local:true do |f| %>
+      <%= form_with model:@food, url:end_user_shopping_food_path, method: :patch, local:true do |f| %>
         <div class="form-group">
           <%= f.label :name, '食材名' %>
           <%= f.text_field :name, class: 'form-control name' %>
