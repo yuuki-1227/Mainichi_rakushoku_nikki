@@ -29,7 +29,6 @@
           <td>
             <% @post_tags.each do |tag| %>
               <%= link_to tag.name, tag_posts_path(tag_id: tag.id) %>
-              <%= "(#{tag.posts.count})" %>
             <% end %>
           </td>
           <td><%= @post.three_meals %></td>
@@ -37,9 +36,9 @@
             <% if end_user_signed_in? %>
               <% if @post.end_user_id == current_end_user.id %>
                 <% if @post.release_status == true %>
-                  <p>公開中</p>
+                  公開中
                 <% else %>
-                  <p>非公開</p>
+                  非公開
                 <% end %>
               <% end %>
             </td>
