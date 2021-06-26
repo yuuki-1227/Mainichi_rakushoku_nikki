@@ -20,15 +20,18 @@
     <div id = "end_user_<%= current_end_user.id %>">
       <%= render 'public/relationships/form', end_user: current_end_user %>
     </div>
+    <h3 class = "main__sidebar--heading">
+      ランキング
+    </h3>
+    <div class="main__blog--ranking">
+      <%= link_to 'フォロワー数',end_users_follower_ranking_path %>
+      <%= link_to '投稿数', end_users_post_ranking_path %>
+    </div>
   </div>
   <div class = "main__blog">
     <h3 class = "main__blog--heading">
       フォロワー数ランキング
     </h3>
-    <div class="main__blog--ranking">
-      <%= link_to 'フォロワー数順',end_users_follower_ranking_path %>
-      <%= link_to '投稿数順', end_users_post_ranking_path %>
-    </div>
     <div class = "main__blog--user-index">
       <%= render 'index', end_users: @follower_ranking_end_users %>
     </div>

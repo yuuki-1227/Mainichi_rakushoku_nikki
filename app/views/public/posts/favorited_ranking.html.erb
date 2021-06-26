@@ -28,6 +28,14 @@
     <div class = "main__sidebar--post-image-index">
       <%= render 'public/posts/posts_images_index', posts: @posts %>
     </div>
+    <h3 class = "main__sidebar--heading">
+      ランキング
+    </h3>
+    <div class="main__blog--ranking">
+      <%= link_to '投稿順', posts_path %>
+      <%= link_to 'いいね数', posts_favorited_ranking_path %>
+      <%= link_to 'コメント数', posts_commented_ranking_path %>
+    </div>
   </div>
   <div class = "main__blog">
     <h3 class = "main__blog--heading">
@@ -40,13 +48,8 @@
       <% end %>
     </div>
     <h3 class = "main__blog--heading">
-      投稿一覧
+      いいねランキング
     </h3>
-    <div class="main__blog--ranking">
-      <%= link_to '投稿順', posts_path %>
-      <%= link_to 'いいね数順', posts_favorited_ranking_path %>
-      <%= link_to 'コメント数順', posts_commented_ranking_path %>
-    </div>
     <div class = "main__blog--post-index">
       <%= render 'index', posts: @favorited_ranking_posts %>
     </div>
