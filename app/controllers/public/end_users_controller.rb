@@ -9,7 +9,7 @@ class Public::EndUsersController < ApplicationController
   # sortとはrubyのメソッド
   # a.favorited_end_users.size、b.favorited_end_users.sizeはそれぞれ各投稿のいいね数
   def follower_ranking
-    @follower_ranking_end_users = EndUser.includes(:followers).sort {|a,b| b.followers.size <=> a.followers.size}
+    @follower_ranking_end_users = EndUser.includes(:followeds).sort {|a,b| b.followeds.size <=> a.followeds.size}
   end
 
   def post_ranking

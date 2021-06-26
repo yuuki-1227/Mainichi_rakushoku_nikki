@@ -79,7 +79,7 @@
         <% @shopping.foods.each do |food| %>
         <tr>
           <td><%= food.name %></td>
-          <td><%= food.amount %>個</td>
+          <td>×<%= food.amount %>個</td>
           <td><%= food.price %>円</td>
           <td><%= link_to '編集', edit_end_user_shopping_food_path(@shopping.end_user, @shopping.id, food) %></td>
           <td><%= link_to '削除', end_user_shopping_food_path(@shopping.end_user, @shopping.id,food), method: :delete %></td>

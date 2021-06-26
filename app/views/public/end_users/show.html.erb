@@ -43,6 +43,12 @@
           <i class="fas fa-calculator"></i> 家計簿画面へ
         <% end %>
       </div>
+      <h3 class = "main__sidebar--heading">
+        退会する方はこちら
+      </h3>
+      <%= link_to end_user_unsubscribe_path(current_end_user) do %>
+        退会画面へ
+      <% end %>
     <% end %>
   </div>
   <div class = "main__blog">
