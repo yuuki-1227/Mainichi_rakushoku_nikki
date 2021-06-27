@@ -55,10 +55,11 @@
             <script>
               $('.post-star').raty({
                 readOnly: true,
-                score: function() {
-                  return $(this).attr('data-score');
-                },
-                path: '/assets/'
+                starOff:  '<%= asset_path(image_url('star-off.png')) %>',
+                starOn : '<%= asset_path(image_url('star-on.png')) %>',
+                starHalf: '<%= asset_path(image_url('star-half.png')) %>',
+                scoreName: 'post[rate]',
+                half: true,
               });
             </script>
           </td>
