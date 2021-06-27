@@ -1,6 +1,6 @@
-class CreateTablePosts < ActiveRecord::Migration[5.2]
+class CreatePosts < ActiveRecord::Migration[5.2]
   def change
-    create_table :table_posts do |t|
+    create_table :posts do |t|
       t.integer "end_user_id"
       t.integer "tag_id"
       t.integer "food_id"
