@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 2021_06_17_090759) do
     t.boolean "is_deleted", default: false
     t.float "rate"
     t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
