@@ -1,4 +1,4 @@
-class Public::ContactsMailer < ApplicationMailer
+class Public::ContactMailer < ApplicationMailer
 # rails g mailer ContactMailer
 
   def send_mail(contact)
