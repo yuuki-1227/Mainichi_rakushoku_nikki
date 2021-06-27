@@ -1,9 +1,8 @@
-フォロー
-<%= link_to end_user.followers.count, end_user_relationships_follows_path(end_user) %>
-フォロワー
-<%= link_to end_user.followeds.count, end_user_relationships_followers_path(end_user) %><br>
-
 <% if end_user_signed_in? %>
+  フォロー
+  <%= link_to end_user.followers.count, end_user_relationships_follows_path(end_user) %>
+  フォロワー
+  <%= link_to end_user.followeds.count, end_user_relationships_followers_path(end_user) %><br>
   <% if end_user.id == current_end_user.id %>
     <%= link_to edit_end_user_path(end_user) do %>
       <button class="btn btn-secondary btn-lg">
@@ -18,11 +17,11 @@
         </button>
       <% end %>
     <% else %>
-        <%= link_to end_user_follow_path(end_user), method: :post, remote: true do %>
-          <button class="btn btn-secondary btn-lg">
-            フォローする
-          </button>
-        <% end %>
+      <%= link_to end_user_follow_path(end_user), method: :post, remote: true do %>
+        <button class="btn btn-secondary btn-lg">
+          フォローする
+        </button>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+ <% end %>
