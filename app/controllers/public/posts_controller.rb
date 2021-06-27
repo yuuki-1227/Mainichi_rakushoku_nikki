@@ -77,7 +77,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:tag_id, :title, :explain, :image, :cooking_method, :three_meals, :release_status, :rate, :start_time)
+    params.require(:post).permit(:tag_id, :title, :explain, :image_id, :cooking_method, :three_meals, :release_status, :rate, :start_time)
   end
 
 end
