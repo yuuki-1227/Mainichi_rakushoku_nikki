@@ -38,7 +38,7 @@ class EndUser < ApplicationRecord
     followers.find_by(followed_id: end_user_id).destroy
   end
 
-  def active_for_authentication?
+  def post_active_for_authentication?
     super && (is_deleted == false)
   end
 

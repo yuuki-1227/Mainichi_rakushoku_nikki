@@ -54,9 +54,9 @@ class Public::EndUsersController < ApplicationController
 
   def ensure_correct_end_user
     @post = Post.find(params[:id])
-     unless @post.end_user == current_end_user
-     redirect_to posts_path
-     end
+    unless @post.end_user == current_end_user
+      redirect_to posts_path
+    end
   end
 
 end

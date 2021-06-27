@@ -38,7 +38,7 @@ class Post < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (release_status == false)
+    super && (is_deleted == false)
   end
 
 end
