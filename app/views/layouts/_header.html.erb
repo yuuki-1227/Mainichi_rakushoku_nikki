@@ -36,7 +36,6 @@
         <li class="header__header-right--list"><%= link_to 'ユーザー一覧',  admin_end_users_path %></li>
         <li class="header__header-right--list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
       <% else %>
-        <li class="header__header-right--list"><%= link_to ' About',  about_path %></li>
         <li class="header__header-right--list">
           <%= link_to posts_path do %>
             <i class="fas fa-list"></i> 投稿一覧
