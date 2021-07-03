@@ -39,12 +39,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     # tag_list = params[:post][:name].split(nil)  # @postを参照してタグの名前も一緒に送信する。例えば「"スポーツ""勉強"」
-    if @post.save                               # split(nil):送信されてきた値を、スペースで区切って配列化する。
-      # @post.save_tag(tag_list)                  # save_tagはpost.rbに定義
-      tags = Vision.get_image_data(@post.image)
-        tags.each do |tag|
-          @post.tags.create(name: tag)
-        end
+    if @post.save                                 # split(nil):送信されてきた値を、スペースで区切って配列化する。
+      tags = Vision.get_image_data(@post.image)  # save_tagはpost.rbに定義
+      @post.save_tag(tags)
       redirect_to end_user_path(current_end_user)
     else
       render "new"
@@ -57,13 +54,9 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:name].split(nil)
     if @post.update(post_params)
-      # @post.save_tag(tag_list)
       tags = Vision.get_image_data(@post.image)
-        tags.each do |tag|
-          @post.tags.create(name: tag)
-        end
+      @post.save_tag(tags)
       redirect_to post_path(@post)
     else
       render "edit"
