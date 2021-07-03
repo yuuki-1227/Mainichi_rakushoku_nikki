@@ -34,7 +34,7 @@ module Vision
       response = https.request(request, params)
       response_body = JSON.parse(response.body)
       # APIレスポンス出力
-      # binding.pry
+      binding.pry
       if (error = response_body['responses'][0]['error']).present?
         raise error['message']
       else
