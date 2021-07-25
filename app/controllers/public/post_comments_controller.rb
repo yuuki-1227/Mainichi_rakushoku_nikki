@@ -9,6 +9,7 @@ class Public::PostCommentsController < ApplicationController
     else
       @end_user = @post.end_user
       @post_new = Post.new
+      # 違うコントローラ(postコントローラ)のshowアクションのレビューを表示
       render template "public/posts/show"
     end
   end
