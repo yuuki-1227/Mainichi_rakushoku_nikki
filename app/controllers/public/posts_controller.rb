@@ -10,7 +10,10 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
     @tag_list = Tag.all
     # いいね数によって並び替え
+    # .includes(:カラム)を指定することで、ここではfollowedsが事前に読み込まれ、
+    # 無駄なSQL文が発行されないため表示速度が早くなる可能性がある
     # sortとはrubyのメソッド
+    # sortの後にブロックを記述してソート方法の指定
     # a.favorited_end_users.size、b.favorited_end_users.sizeはそれぞれ各投稿のいいね数
     @favorited_ranking_posts = Post.includes(:favorited_end_users).sort {|a,b| b.favorited_end_users.size <=> a.favorited_end_users.size}
   end
