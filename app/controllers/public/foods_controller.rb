@@ -32,11 +32,6 @@ class Public::FoodsController < ApplicationController
     redirect_to end_user_shopping_path(current_end_user, @food.shopping_id)
   end
 
-  def destroy_all
-    @foods = current_end_user.foods
-    @foods.destroy_all
-    redirect_to end_user_shoppings_path
-  end
 
   private
 
