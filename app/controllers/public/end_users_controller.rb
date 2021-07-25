@@ -1,13 +1,17 @@
 class Public::EndUsersController < ApplicationController
 
   # 一覧画面
+  # EndUserテーブルから.allによって全ての要素を取得
   def index
     @end_users = EndUser.all
   end
 
   # フォロワー数によって並び替え
+  # .includes(:カラム)を指定することで、ここではfollowedsが事前に読み込まれ、
+  # 無駄なSQL文が発行されないため表示速度が早くなる可能性がある
   # sortとはrubyのメソッド
-  # a.favorited_end_users.size、b.favorited_end_users.sizeはそれぞれ各投稿のいいね数
+  # sortの後にブロックを記述してソート方法の指定
+  # a.followeds.size、b.followeds.sizeはそれぞれ各ユーザーのフォロワー数
   def follower_ranking
     @follower_ranking_end_users = EndUser.includes(:followeds).sort {|a,b| b.followeds.size <=> a.followeds.size}
   end
